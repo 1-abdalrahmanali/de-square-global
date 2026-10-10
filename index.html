@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>De Square Global | Curriculum Development Services</title>
+  <meta name="description" content="De Square Global delivers performance-based curriculum design through proven DACUM and WIDS methodologies. Exclusive WIDS partner across the GCC and selected Middle East countries." />
+
+  <!-- ============ Fonts: Exo 2 (headings) + Roboto (body) ============ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- ============ Font Awesome 6 (icons) ============ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+
+  <!-- ============ Tailwind CSS (Play CDN) ============
+       For production, compile Tailwind with the CLI and replace this script
+       with the generated stylesheet (the config below can be copied as-is). -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              DEFAULT: '#0F2B5C', // primary dark navy (headings, dark sections)
+              900: '#081A3A',
+              800: '#0A1F45',     // CTA + footer
+              600: '#1D3C82',     // clients section
+            },
+            brand: {
+              DEFAULT: '#0066CC', // accent blue (buttons, highlights, links)
+              dark: '#0052A3',
+              light: '#E6F0FA',
+            },
+            surface: '#F8FAFC',
+          },
+          fontFamily: {
+            display: ['"Exo 2"', 'system-ui', 'sans-serif'],
+            sans: ['Roboto', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            soft: '0 4px 20px -6px rgba(15, 43, 92, 0.12)',
+            card: '0 18px 40px -16px rgba(15, 43, 92, 0.28)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <script>
+    // Flag JS support (scroll-reveal animations only run when JS is on).
+    document.documentElement.classList.add('js');
+
+    // Placeholder fallback: if any remote image fails to load, swap in a neutral inline SVG
+    // so the layout never shows a broken-image icon.
+    window.imgFallback = function (img) {
+      img.onerror = null;
+      img.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">' +
+        '<rect width="400" height="300" fill="#E2E8F0"/>' +
+        '<circle cx="165" cy="118" r="16" fill="#94A3B8"/>' +
+        '<path d="M130 200l45-55 32 38 22-26 41 43z" fill="#94A3B8"/></svg>'
+      );
+    };
+  </script>
+
+  <style>
+    /* ================= Base ================= */
+    :root {
+      --navy: #0F2B5C;
+      --navy-800: #0A1F45;
+      --brand: #0066CC;
+      --brand-dark: #0052A3;
+      --brand-light: #E6F0FA;
+    }
+    [id] { scroll-margin-top: 88px; } /* offset anchors for the sticky header */
+    body { -webkit-font-smoothing: antialiased; }
+
+    /* ================= Buttons ================= */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      padding: .85rem 1.5rem; border-radius: .375rem;
+      font-size: .9rem; font-weight: 500; line-height: 1.2; white-space: nowrap;
+      transition: background-color .25s ease, color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+    }
+    .btn i { transition: transform .25s ease; }
+    .btn:hover .fa-arrow-right { transform: translateX(4px); }
+    .btn:hover .fa-circle-down { transform: translateY(2px); }
+    .btn:focus-visible { outline: 3px solid rgba(0, 102, 204, .45); outline-offset: 2px; }
+
+    .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 8px 18px -10px rgba(0, 102, 204, .8); }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 12px 24px -10px rgba(0, 102, 204, .9); }
+
+    .btn-outline { background: #fff; color: var(--navy); border: 1.5px solid var(--brand); }
+    .btn-outline:hover { background: var(--brand); color: #fff; transform: translateY(-2px); }
+
+    .btn-light { background: #fff; color: var(--navy); }
+    .btn-light:hover { background: var(--brand-light); transform: translateY(-2px); }
+
+    .btn-ghost-light { color: #fff; border: 1.5px solid rgba(255, 255, 255, .85); }
+    .btn-ghost-light:hover { background: #fff; color: var(--navy); transform: translateY(-2px); }
+
+    /* ================= Typography helpers ================= */
+    .eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand); }
+    .wids {
+      font-weight: 700; color: var(--navy);
+      text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--brand);
+    }
+    .wids-light { color: #fff; text-decoration-color: rgba(255, 255, 255, .7); }
+
+    /* ================= Header / Navigation ================= */
+    #siteHeader.scrolled { box-shadow: 0 6px 24px -12px rgba(15, 43, 92, .35); }
+
+    .nav-link { position: relative; transition: color .2s ease; }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px;
+      background: var(--brand); border-radius: 2px; transform: scaleX(0); transition: transform .25s ease;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--brand); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+    /* Programs dropdown (hover, keyboard focus, or click via .open) */
+    .dropdown-panel { opacity: 0; visibility: hidden; transform: translate(-50%, 8px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
+    .has-dropdown:hover .dropdown-panel,
+    .has-dropdown:focus-within .dropdown-panel,
+    .has-dropdown.open .dropdown-panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+    .has-dropdown:hover .chev, .has-dropdown.open .chev { transform: rotate(180deg); }
+
+    /* Mobile menu slide-down */
+    #mobileMenu { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+    #mobileMenu.open { grid-template-rows: 1fr; }
+    #mobileMenu > div { overflow: hidden; }
+
+    /* ================= Hero ================= */
+    .hero-bg { background: linear-gradient(120deg, #EDF2FA 0%, #F6F9FD 45%, #FFFFFF 100%); }
+    /* Dotted "world map" texture behind the hero copy */
+    .hero-dots {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(15, 43, 92, .16) 1.3px, transparent 1.6px);
+      background-size: 14px 14px;
+      -webkit-mask-image: radial-gradient(ellipse 45% 55% at 22% 38%, #000 0%, transparent 70%);
+              mask-image: radial-gradient(ellipse 45% 55% at 22% 38%, #000 0%, transparent 70%);
+    }
+    /* Desktop: curved left edge on the hero photo + layered blue bands */
+    @media (min-width: 1024px) {
+      .hero-photo { clip-path: url(#heroClip); border-radius: 0 !important; }
+    }
+
+    /* ================= Cards ================= */
+    .lift { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+    .lift:hover { transform: translateY(-6px); box-shadow: 0 22px 44px -18px rgba(15, 43, 92, .35); }
+
+    .delivery-card:hover { border-color: var(--brand); }
+    .delivery-card:hover .delivery-icon { background: var(--brand); color: #fff; }
+
+    .client-card:hover { box-shadow: 0 0 0 4px rgba(255, 255, 255, .25), 0 22px 40px -18px rgba(0, 0, 0, .5); }
+
+    /* ================= Scroll reveal ================= */
+    .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; transition-delay: var(--d, 0ms); }
+    .js .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* ================= Floating contact buttons ================= */
+    .pulse::before {
+      content: ''; position: absolute; inset: 0; border-radius: 9999px; background: #22C55E;
+      animation: pulse 2.2s ease-out infinite; z-index: -1;
+    }
+    @keyframes pulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.7); opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      .pulse::before { animation: none; }
+      .btn, .lift, .nav-link::after { transition: none; }
+    }
+  </style>
+</head>
+
+<body class="font-sans text-slate-600 bg-white antialiased">
+
+  <!-- Hidden SVG defs: curved clip for the hero photo (objectBoundingBox = scales with the image) -->
+  <svg width="0" height="0" class="absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <clipPath id="heroClip" clipPathUnits="objectBoundingBox">
+        <path d="M0.15,0 C0.07,0.12 0.015,0.28 0.01,0.46 C0.005,0.66 0.04,0.85 0.11,1 L1,1 L1,0 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- =====================================================================
+       1. NAVIGATION BAR (sticky)
+       ===================================================================== -->
+  <header id="siteHeader" class="sticky top-0 z-50 bg-white/95 backdrop-blur transition-shadow duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
+
+      <!-- Dual brand logos.
+           Placeholder wordmarks: replace each <span> group with your logo files, e.g.
+           <img src="assets/desquare-logo.png" alt="De Square Global" class="h-12 w-auto"> -->
+      <a href="#home" class="flex items-center gap-4 shrink-0" aria-label="De Square Global home">
+        <span class="flex items-center gap-2.5">
+          <span class="w-11 h-11 rounded-lg bg-gradient-to-br from-brand to-navy grid place-items-center text-white text-lg shadow-soft">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </span>
+          <span class="leading-tight">
+            <span class="block font-display font-bold text-navy text-[17px] sm:text-lg">De Square Global</span>
+            <span class="block text-[8.5px] sm:text-[9px] font-medium text-brand tracking-wide uppercase">For Education Consulting Services</span>
+          </span>
+        </span>
+        <span class="hidden sm:block h-9 w-px bg-slate-200"></span>
+        <span class="hidden sm:flex items-center gap-1.5 font-display font-extrabold italic text-navy text-2xl tracking-tight">
+          <i class="fa-solid fa-earth-americas text-brand text-xl not-italic"></i>WIDS
+        </span>
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="hidden xl:flex items-center gap-7 text-[14px] font-medium text-navy" aria-label="Primary">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="about-us.html" class="nav-link">About Us</a>
+        <a href="delivery-options-booking.html" class="nav-link">Delivery Options &amp; Booking</a>
+        <a href="our-clients.html" class="nav-link">Our Clients</a>
+
+        <!-- Programs dropdown -->
+        <div class="has-dropdown relative" id="programsDropdown">
+          <button type="button" class="nav-link flex items-center gap-1.5" aria-haspopup="true" aria-expanded="false" id="programsBtn">
+            Programs <i class="chev fa-solid fa-chevron-down text-[10px] transition-transform duration-200"></i>
+          </button>
+          <div class="dropdown-panel absolute left-1/2 top-full pt-5 w-80">
+            <div class="bg-white rounded-xl shadow-card border border-slate-100 p-2">
+              <a href="wids-course-design-workshop.html" class="flex gap-3 p-3 rounded-lg hover:bg-brand-light transition">
+                <span class="w-10 h-10 shrink-0 rounded-lg bg-brand-light text-brand grid place-items-center"><i class="fa-solid fa-pen-ruler"></i></span>
+                <span>
+                  <span class="block text-navy font-semibold">WIDS Course Design Workshop</span>
+                  <span class="block text-xs text-slate-500 font-normal">Build performance-based courses</span>
+                </span>
+              </a>
+              <a href="wids-dacum-facilitator-certificate.html" class="flex gap-3 p-3 rounded-lg hover:bg-brand-light transition">
+                <span class="w-10 h-10 shrink-0 rounded-lg bg-brand-light text-brand grid place-items-center"><i class="fa-solid fa-diagram-project"></i></span>
+                <span>
+                  <span class="block text-navy font-semibold">WIDS DACUM Facilitator Workshop</span>
+                  <span class="block text-xs text-slate-500 font-normal">Lead DACUM occupational analysis</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="contact-us.html" class="nav-link">Contact Us</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:block"><a href="contact-us.html" class="btn btn-primary !px-7">Request a Book</a></span>
+
+        <!-- Mobile menu toggle -->
+        <button id="menuBtn" type="button" class="xl:hidden w-11 h-11 rounded-lg border border-slate-200 text-navy grid place-items-center hover:bg-brand-light transition"
+                aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile / tablet menu -->
+    <div id="mobileMenu" class="xl:hidden border-t border-slate-100 bg-white">
+      <div>
+        <nav class="px-4 sm:px-6 py-4 flex flex-col text-navy font-medium" aria-label="Mobile">
+          <a href="#home" class="py-3 border-b border-slate-100 hover:text-brand">Home</a>
+          <a href="about-us.html" class="py-3 border-b border-slate-100 hover:text-brand">About Us</a>
+          <a href="delivery-options-booking.html" class="py-3 border-b border-slate-100 hover:text-brand">Delivery Options &amp; Booking</a>
+          <a href="our-clients.html" class="py-3 border-b border-slate-100 hover:text-brand">Our Clients</a>
+          <div class="py-3 border-b border-slate-100">
+            <span class="block">Programs</span>
+            <a href="wids-course-design-workshop.html" class="block pl-4 pt-2 text-sm text-slate-600 hover:text-brand"><i class="fa-solid fa-angle-right text-brand text-xs mr-2"></i>WIDS Course Design Workshop</a>
+            <a href="wids-dacum-facilitator-certificate.html" class="block pl-4 pt-2 text-sm text-slate-600 hover:text-brand"><i class="fa-solid fa-angle-right text-brand text-xs mr-2"></i>WIDS DACUM Facilitator Workshop</a>
+          </div>
+          <a href="contact-us.html" class="py-3 hover:text-brand">Contact Us</a>
+          <span class="sm:hidden mt-3 grid"><a href="contact-us.html" class="btn btn-primary">Request a Book</a></span>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         2. HERO
+         ===================================================================== -->
+    <section id="home" class="hero-bg relative overflow-hidden">
+      <div class="hero-dots" aria-hidden="true"></div>
+
+      <div class="relative lg:static max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-28 lg:pt-0 lg:pb-24 lg:min-h-[640px] lg:flex lg:items-center">
+        <!-- Left column: copy -->
+        <div class="relative z-10 lg:w-[46%] lg:pr-6 reveal">
+          <h1 class="font-display font-bold text-navy text-4xl sm:text-5xl lg:text-[3.1rem] leading-[1.12]">
+            Curriculum Development Services
+          </h1>
+          <p class="mt-5 text-[15px] sm:text-base leading-relaxed text-slate-600 max-w-xl">
+            We offer performance-based curriculum design solutions that meet labor market demands, bridge essential skills gaps,
+            and improve learning outcomes through proven DACUM and <strong class="text-navy">WIDS</strong> methodologies, aligned with
+            international standards through benchmarking and quality review. We also provide professional instructional consulting
+            services and interactive, effective, and innovative training programs.
+          </p>
+
+          <div class="mt-8 grid sm:grid-cols-2 gap-3 max-w-xl">
+            <a href="#programs" class="btn btn-primary">Explore Our Programs <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#clients" class="btn btn-outline">Trusted By <i class="fa-solid fa-file-signature text-brand"></i></a>
+          </div>
+
+          <div class="mt-7 flex items-start gap-3 max-w-md">
+            <span class="w-10 h-10 shrink-0 rounded-full bg-brand-light text-brand grid place-items-center">
+              <i class="fa-solid fa-shield-halved"></i>
+            </span>
+            <p class="text-sm leading-relaxed text-slate-600">
+              Exclusive <strong class="text-navy">WIDS</strong> partner and representative across the
+              <span class="text-navy font-medium">GCC countries</span> and selected Middle East countries
+            </p>
+          </div>
+        </div>
+
+        <!-- Right column: photo (stacked on mobile, full-bleed right on desktop) -->
+        <div class="relative mt-12 lg:mt-0 lg:absolute lg:inset-y-0 lg:right-0 lg:w-[52%] reveal" style="--d:150ms">
+          <!-- Placeholder photo: replace with your group photo of certificate holders -->
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80"
+            alt="Workshop participants celebrating their WIDS certification"
+            class="hero-photo w-full h-72 sm:h-96 lg:h-full object-cover rounded-2xl shadow-card lg:shadow-none"
+            onerror="imgFallback(this)" />
+          <!-- Blue bands following the curved edge (desktop only) -->
+          <svg class="hidden lg:block absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M15,0 C7,12 1.5,28 1,46 C0.5,66 4,85 11,100" fill="none" stroke="#0F2B5C" stroke-width="16" vector-effect="non-scaling-stroke" />
+            <path d="M12.2,0 C4.2,12 -1.3,28 -1.8,46 C-2.3,66 1.2,85 8.2,100" fill="none" stroke="#0066CC" stroke-width="9" vector-effect="non-scaling-stroke" />
+            <path d="M9.8,0 C1.8,12 -3.7,28 -4.2,46 C-4.7,66 -1.2,85 5.8,100" fill="none" stroke="#9CC3EC" stroke-width="3" vector-effect="non-scaling-stroke" />
+          </svg>
+          <!-- Floating accent chip -->
+          <div class="absolute left-4 top-4 lg:left-auto lg:right-8 lg:top-8 bg-white/95 backdrop-blur rounded-xl shadow-card px-4 py-3 flex items-center gap-3">
+            <span class="w-9 h-9 rounded-lg bg-brand text-white grid place-items-center"><i class="fa-solid fa-award"></i></span>
+            <span class="leading-tight">
+              <span class="block text-xs text-slate-500">Certified by</span>
+              <span class="block text-sm font-bold text-navy">WIDS Programs</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. KEY METRICS (floating strip overlapping the hero)
+         ===================================================================== -->
+    <section class="relative z-10 -mt-16 px-4 sm:px-6" aria-label="Key figures">
+      <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-card grid grid-cols-2 md:grid-cols-4 reveal">
+        <div class="p-6 md:p-8 text-center border-r border-b md:border-b-0 border-slate-100 group">
+          <div class="font-display font-light text-brand text-4xl md:text-5xl transition-transform duration-300 group-hover:-translate-y-1">
+            <span class="counter" data-target="12">12</span>
+          </div>
+          <p class="mt-2 text-sm text-navy">Countries Covered</p>
+        </div>
+        <div class="p-6 md:p-8 text-center border-b md:border-b-0 md:border-r border-slate-100 group">
+          <div class="font-display font-light text-brand text-4xl md:text-5xl transition-transform duration-300 group-hover:-translate-y-1">
+            <span class="counter" data-target="50" data-suffix="+">50+</span>
+          </div>
+          <p class="mt-2 text-sm text-navy">Years Of Experience</p>
+        </div>
+        <div class="p-6 md:p-8 text-center border-r border-slate-100 group">
+          <div class="font-display font-light text-brand text-4xl md:text-5xl transition-transform duration-300 group-hover:-translate-y-1">
+            <span class="counter" data-target="4">4</span>
+          </div>
+          <p class="mt-2 text-sm text-navy">Flexible Delivery</p>
+        </div>
+        <div class="p-6 md:p-8 text-center group">
+          <div class="font-display font-light text-brand text-4xl md:text-5xl transition-transform duration-300 group-hover:-translate-y-1">
+            <span class="counter" data-target="5" data-suffix="-Day">5-Day</span>
+          </div>
+          <p class="mt-2 text-sm text-navy">Hands-On</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. ABOUT: "Bridging Education & Industry"
+         ===================================================================== -->
+    <section id="about" class="py-20 lg:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+        <!-- Image -->
+        <div class="relative reveal">
+          <div class="absolute -left-3 -top-3 w-28 h-28 rounded-2xl bg-brand-light -z-10" aria-hidden="true"></div>
+          <div class="overflow-hidden rounded-2xl shadow-card group">
+            <!-- Placeholder photo: replace with your workshop / conference room photo -->
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1100&q=80"
+                 alt="Curriculum professionals attending a WIDS workshop"
+                 class="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105"
+                 loading="lazy" onerror="imgFallback(this)" />
+          </div>
+          <div class="absolute -bottom-6 right-4 sm:-right-4 bg-white rounded-xl shadow-card px-5 py-4 flex items-center gap-3">
+            <span class="w-10 h-10 rounded-full bg-brand-light text-brand grid place-items-center"><i class="fa-solid fa-certificate"></i></span>
+            <span class="leading-tight">
+              <span class="block font-display text-2xl font-semibold text-navy">2</span>
+              <span class="block text-xs text-slate-500">Certified Workshops</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Copy -->
+        <div class="reveal" style="--d:120ms">
+          <p class="eyebrow">About De Square Global</p>
+          <h2 class="mt-2 font-display font-bold text-navy text-3xl sm:text-4xl">Bridging Education &amp; Industry</h2>
+          <p class="mt-5 text-[15px] leading-relaxed">
+            De Square Global helps educational institutions build practical, performance-based curriculum aligned with real job
+            market needs. We deliver this through two complementary <a href="#programs" class="wids">WIDS</a> certified workshops:
+            the <a href="#programs" class="wids">WIDS</a> DACUM Facilitator Workshop trains participants to plan and lead DACUM
+            sessions, a proven job analysis method that identifies the key duties, tasks, and skills defining an occupation,
+            guided by expert panels. The <a href="#programs" class="wids">WIDS</a> Course Design Workshop builds on those results
+            to develop a complete, performance-based course, from learning outcomes to interactive, learner-centered activities.
+          </p>
+
+          <ul class="mt-6 space-y-3 text-[15px] text-navy">
+            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand mt-1"></i> Industry-Aligned Curriculum Design</li>
+            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand mt-1"></i> Measurable Learning &amp; Performance Outcomes</li>
+            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand mt-1"></i> Benchmarking with International Standards and Review</li>
+          </ul>
+
+          <a href="about-us.html" class="btn btn-primary mt-8">Learn More About Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         5. CERTIFICATION PROGRAMS
+         ===================================================================== -->
+    <section id="programs" class="pb-20 lg:pb-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto reveal">
+          <p class="eyebrow">Our Certification Programs</p>
+          <h2 class="mt-2 font-display font-bold text-navy text-3xl sm:text-4xl">Professional Programs with Practical Impact</h2>
+          <p class="mt-4 text-[15px]">
+            Hands-on <a href="#programs" class="wids">WIDS</a> certification programs designed for faculty members, curriculum
+            professionals, and human resources development teams
+          </p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+          <!-- Program card 1 -->
+          <article class="lift group bg-white rounded-2xl border border-slate-200 shadow-soft overflow-hidden flex flex-col reveal">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <!-- Placeholder banner image -->
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"
+                   alt="Educators designing a performance-based course"
+                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   loading="lazy" onerror="imgFallback(this)" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy/50 via-navy/10 to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-white/95 text-navy text-xs font-semibold px-3 py-1.5 rounded-full shadow-soft">
+                <i class="fa-solid fa-certificate text-brand mr-1"></i> Certification
+              </span>
+              <!-- Wave caption band (light) -->
+              <svg class="absolute bottom-0 left-0 w-full h-24" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0,38 C110,78 250,6 400,40 L400,100 L0,100 Z" fill="#FFFFFF" />
+                <path d="M0,38 C110,78 250,6 400,40" fill="none" stroke="#0066CC" stroke-opacity=".35" stroke-width="2" />
+              </svg>
+              <p class="absolute bottom-4 inset-x-0 text-center font-display font-bold text-navy text-lg">WIDS Course Design Workshop</p>
+            </div>
+
+            <div class="p-6 sm:p-7 flex flex-col flex-1">
+              <h3 class="font-display font-semibold text-brand text-2xl">WIDS Course Design Workshop</h3>
+              <p class="mt-2 text-[15px] leading-relaxed">
+                A collaborative 5-day workshop where educators and curriculum designers build or revise performance-based courses
+                using the <span class="wids">WIDS</span> framework.
+              </p>
+
+              <dl class="mt-5 text-sm divide-y divide-slate-200 border-y border-slate-200">
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Duration</dt><dd>5 Full Days</dd></div>
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Cohort Size</dt><dd>Up to 20 Participants</dd></div>
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Language</dt><dd>English / Arabic</dd></div>
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Delivery Options</dt><dd>In-Person | Virtual | Hybrid</dd></div>
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Certification</dt><dd>WIDS Course Design Certificate</dd></div>
+              </dl>
+
+              <div class="mt-auto pt-6 grid sm:grid-cols-2 gap-3">
+                <a href="wids-course-design-workshop.html" class="btn btn-primary">View Program Details</a>
+                <a href="#" class="btn btn-outline" download>Download Brochure <i class="fa-regular fa-circle-down text-brand"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Program card 2 -->
+          <article class="lift group bg-white rounded-2xl border border-slate-200 shadow-soft overflow-hidden flex flex-col reveal" style="--d:120ms">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <!-- Placeholder banner image -->
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80"
+                   alt="Facilitator leading a DACUM occupational analysis session"
+                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   loading="lazy" onerror="imgFallback(this)" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-white/95 text-navy text-xs font-semibold px-3 py-1.5 rounded-full shadow-soft">
+                <i class="fa-solid fa-certificate text-brand mr-1"></i> Certification
+              </span>
+              <!-- Wave caption band (dark) -->
+              <svg class="absolute bottom-0 left-0 w-full h-24" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0,38 C110,78 250,6 400,40 L400,100 L0,100 Z" fill="#0F2B5C" />
+                <path d="M0,38 C110,78 250,6 400,40" fill="none" stroke="#3B8FE6" stroke-width="3" />
+              </svg>
+              <p class="absolute bottom-4 inset-x-0 text-center font-display font-bold text-white text-lg">WIDS DACUM Facilitator Workshop</p>
+            </div>
+
+            <div class="p-6 sm:p-7 flex flex-col flex-1">
+              <h3 class="font-display font-semibold text-brand text-2xl">WIDS DACUM Facilitator Workshop</h3>
+              <p class="mt-2 text-[15px] leading-relaxed">
+                A hands-on 5-day certification workshop that equips education and curriculum professionals to plan, facilitate,
+                and implement DACUM occupational analysis studies.
+              </p>
+
+              <dl class="mt-5 text-sm divide-y divide-slate-200 border-y border-slate-200">
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Duration</dt><dd>5 Full Days</dd></div>
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Cohort Size</dt><dd>Up to 20 Participants</dd></div>
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Language</dt><dd>English / Arabic</dd></div>
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Delivery Options</dt><dd>In-Person | Virtual | Hybrid</dd></div>
+                <div class="py-2.5 grid grid-cols-[130px_1fr] gap-3"><dt class="font-semibold text-navy">Certification</dt><dd>WIDS DACUM Facilitator Certificate</dd></div>
+              </dl>
+
+              <div class="mt-auto pt-6 grid sm:grid-cols-2 gap-3">
+                <a href="wids-dacum-facilitator-certificate.html" class="btn btn-primary">View Program Details</a>
+                <a href="#" class="btn btn-outline" download>Download Brochure <i class="fa-regular fa-circle-down text-brand"></i></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         6. CLIENTS & PARTNERS
+         ===================================================================== -->
+    <section id="clients" class="relative bg-navy-600 py-20 lg:py-24 overflow-hidden">
+      <!-- subtle glow -->
+      <div class="absolute -top-40 -right-40 w-[520px] h-[520px] rounded-full bg-brand/20 blur-3xl" aria-hidden="true"></div>
+      <div class="absolute -bottom-48 -left-40 w-[480px] h-[480px] rounded-full bg-navy/60 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto reveal">
+          <p class="text-xs font-bold tracking-[.08em] uppercase text-white/80">Trusted Across the Region</p>
+          <h2 class="mt-2 font-display font-bold text-white text-3xl sm:text-4xl">Working with Leading Educational Institutions</h2>
+          <p class="mt-4 text-[15px] text-white/85">
+            De Square Global and <span class="wids wids-light">WIDS</span> support institutions in developing performance-based
+            curriculum, improving quality, and aligning with job market needs.
+          </p>
+        </div>
+
+        <!-- Logo grid (4 x 2).
+             Placeholders: replace each card's inner content with the client's logo, e.g.
+             <img src="assets/clients/client-name.png" alt="Client name" class="max-h-24 w-auto object-contain"> -->
+        <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
+          <div class="client-card lift bg-white rounded-2xl aspect-square sm:aspect-[1/1.03] p-5 flex flex-col items-center justify-center text-center reveal">
+            <i class="fa-solid fa-people-group text-4xl text-teal-600"></i>
+            <span class="mt-3 text-xs sm:text-sm font-semibold text-navy leading-snug">Human Capability<br class="hidden sm:block" /> Development Program</span>
+          </div>
+          <div class="client-card lift bg-white rounded-2xl aspect-square sm:aspect-[1/1.03] p-5 flex flex-col items-center justify-center text-center reveal" style="--d:60ms">
+            <i class="fa-solid fa-screwdriver-wrench text-4xl text-emerald-700"></i>
+            <span class="mt-3 text-xs sm:text-sm font-semibold text-navy leading-snug">Technical &amp; Vocational<br class="hidden sm:block" /> Training Corporation</span>
+          </div>
+          <div class="client-card lift bg-white rounded-2xl aspect-square sm:aspect-[1/1.03] p-5 flex flex-col items-center justify-center text-center reveal" style="--d:120ms">
+            <i class="fa-solid fa-landmark text-4xl text-amber-600"></i>
+            <span class="mt-3 text-xs sm:text-sm font-semibold text-navy leading-snug">UAE Ministry<br class="hidden sm:block" /> of Education</span>
+          </div>
+          <div class="client-card lift bg-white rounded-2xl aspect-square sm:aspect-[1/1.03] p-5 flex flex-col items-center justify-center text-center reveal" style="--d:180ms">
+            <i class="fa-solid fa-star text-4xl text-fuchsia-600"></i>
+            <span class="mt-3 text-xs sm:text-sm font-semibold text-navy leading-snug">Colleges of<br class="hidden sm:block" /> Excellence</span>
+          </div>
+          <div class="client-card lift bg-white rounded-2xl aspect-square sm:aspect-[1/1.03] p-5 flex flex-col items-center justify-center text-center reveal">
+            <i class="fa-solid fa-user-graduate text-4xl text-sky-600"></i>
+            <span class="mt-3 text-xs sm:text-sm font-semibold text-navy leading-snug">ASA</span>
+          </div>
+          <div class="client-card lift bg-white rounded-2xl aspect-square sm:aspect-[1/1.03] p-5 flex flex-col items-center justify-center text-center reveal" style="--d:60ms">
+            <i class="fa-solid fa-award text-4xl text-yellow-700"></i>
+            <span class="mt-3 text-xs sm:text-sm font-semibold text-navy leading-snug">Quality Assurance &amp;<br class="hidden sm:block" /> Accreditation Authority</span>
+          </div>
+          <div class="client-card lift bg-white rounded-2xl aspect-square sm:aspect-[1/1.03] p-5 flex flex-col items-center justify-center text-center reveal" style="--d:120ms">
+            <i class="fa-solid fa-building-columns text-4xl text-green-600"></i>
+            <span class="mt-3 text-xs sm:text-sm font-semibold text-navy leading-snug">The Applied Colleges<br class="hidden sm:block" /> Initiative</span>
+          </div>
+          <div class="client-card lift bg-white rounded-2xl aspect-square sm:aspect-[1/1.03] p-5 flex flex-col items-center justify-center text-center reveal" style="--d:180ms">
+            <i class="fa-solid fa-book-open text-4xl text-teal-500"></i>
+            <span class="mt-3 text-xs sm:text-sm font-semibold text-navy leading-snug">Ministry of<br class="hidden sm:block" /> Education</span>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <a href="our-clients.html" class="btn btn-ghost-light !px-7">View All Our Clients <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         7. FLEXIBLE DELIVERY OPTIONS
+         ===================================================================== -->
+    <section id="delivery" class="py-20 lg:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto reveal">
+          <p class="text-sm font-semibold text-brand">Flexible Delivery</p>
+          <h2 class="mt-1 font-display font-bold text-navy text-3xl sm:text-4xl">Training Delivered Your Way</h2>
+          <p class="mt-4 text-[15px]">Choose the training format that best fits your team, location, and schedule.</p>
+        </div>
+
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
+          <div class="delivery-card lift bg-white border border-slate-200 rounded-xl p-6 reveal">
+            <div class="flex items-center gap-3">
+              <span class="delivery-icon w-12 h-12 rounded-lg bg-brand-light text-brand grid place-items-center text-xl transition-colors duration-300"><i class="fa-solid fa-laptop"></i></span>
+              <h3 class="font-display font-semibold text-brand text-xl">Online</h3>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed">Live, interactive training from anywhere.</p>
+          </div>
+          <div class="delivery-card lift bg-white border border-slate-200 rounded-xl p-6 reveal" style="--d:80ms">
+            <div class="flex items-center gap-3">
+              <span class="delivery-icon w-12 h-12 rounded-lg bg-brand-light text-brand grid place-items-center text-xl transition-colors duration-300"><i class="fa-solid fa-power-off"></i></span>
+              <h3 class="font-display font-semibold text-brand text-xl">In-Person</h3>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed">Hands-on training with direct expert guidance.</p>
+          </div>
+          <div class="delivery-card lift bg-white border border-slate-200 rounded-xl p-6 reveal" style="--d:160ms">
+            <div class="flex items-center gap-3">
+              <span class="delivery-icon w-12 h-12 rounded-lg bg-brand-light text-brand grid place-items-center text-xl transition-colors duration-300"><i class="fa-solid fa-business-time"></i></span>
+              <h3 class="font-display font-semibold text-brand text-xl">Hybrid</h3>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed">A flexible mix of online and in-person participation.</p>
+          </div>
+          <div class="delivery-card lift bg-white border border-slate-200 rounded-xl p-6 reveal" style="--d:240ms">
+            <div class="flex items-center gap-3">
+              <span class="delivery-icon w-12 h-12 rounded-lg bg-brand-light text-brand grid place-items-center text-xl transition-colors duration-300"><i class="fa-solid fa-user-tie"></i></span>
+              <h3 class="font-display font-semibold text-brand text-xl">On-Site</h3>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed">Complete training delivered at your institution.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="delivery-options-booking.html" class="btn btn-primary !px-7">Explore Delivery Options</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         8. OUR EXPERTS
+         ===================================================================== -->
+    <section id="experts" class="bg-surface py-20 lg:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-4xl mx-auto reveal">
+          <p class="text-sm font-semibold text-brand">Our Experts</p>
+          <h2 class="mt-1 font-display font-bold text-navy text-3xl sm:text-4xl">Learn from Experienced Curriculum Professionals</h2>
+          <p class="mt-4 text-[15px]">
+            Our team combines international <span class="wids">WIDS</span> expertise with decades of experience in curriculum
+            design, assessment, educational analysis (DACUM), and development.
+          </p>
+        </div>
+
+        <!-- Team cards (flex-wrap keeps the 5th card centered on 2- and 3-column layouts).
+             Portraits are stock placeholders: replace with each expert's real headshot. -->
+        <div class="mt-12 flex flex-wrap justify-center gap-5">
+          <!-- Expert card template -->
+          <article class="lift group bg-white rounded-xl border border-slate-200 shadow-soft overflow-hidden w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-16px)] flex flex-col reveal">
+            <div class="overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&h=560&q=80"
+                   alt="Khaled Alduraie" class="w-full aspect-[5/5.4] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                   loading="lazy" onerror="imgFallback(this)" />
+            </div>
+            <div class="p-4 text-center flex flex-col flex-1">
+              <h3 class="font-display font-bold text-brand text-[17px]">Khaled Alduraie</h3>
+              <p class="mt-1 text-[13px] text-slate-500 leading-snug flex-1">Curriculum Design Consultant</p>
+              <a href="#experts" class="btn btn-primary !py-2.5 !px-3 !text-[13px] mt-4 w-full"><i class="fa-regular fa-eye"></i> View Profile</a>
+            </div>
+          </article>
+
+          <article class="lift group bg-white rounded-xl border border-slate-200 shadow-soft overflow-hidden w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-16px)] flex flex-col reveal" style="--d:60ms">
+            <div class="overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=500&h=560&q=80"
+                   alt="Leah Osborn" class="w-full aspect-[5/5.4] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                   loading="lazy" onerror="imgFallback(this)" />
+            </div>
+            <div class="p-4 text-center flex flex-col flex-1">
+              <h3 class="font-display font-bold text-brand text-[17px]">Leah Osborn</h3>
+              <p class="mt-1 text-[13px] text-slate-500 leading-snug flex-1">Ph.D., Director, WIDS Division</p>
+              <a href="#experts" class="btn btn-primary !py-2.5 !px-3 !text-[13px] mt-4 w-full"><i class="fa-regular fa-eye"></i> View Profile</a>
+            </div>
+          </article>
+
+          <article class="lift group bg-white rounded-xl border border-slate-200 shadow-soft overflow-hidden w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-16px)] flex flex-col reveal" style="--d:120ms">
+            <div class="overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&h=560&q=80"
+                   alt="Melinda Schroepfer" class="w-full aspect-[5/5.4] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                   loading="lazy" onerror="imgFallback(this)" />
+            </div>
+            <div class="p-4 text-center flex flex-col flex-1">
+              <h3 class="font-display font-bold text-brand text-[17px]">Melinda Schroepfer</h3>
+              <p class="mt-1 text-[13px] text-slate-500 leading-snug flex-1">WIDS Learning Design Consultant</p>
+              <a href="#experts" class="btn btn-primary !py-2.5 !px-3 !text-[13px] mt-4 w-full"><i class="fa-regular fa-eye"></i> View Profile</a>
+            </div>
+          </article>
+
+          <article class="lift group bg-white rounded-xl border border-slate-200 shadow-soft overflow-hidden w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-16px)] flex flex-col reveal" style="--d:180ms">
+            <div class="overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&h=560&q=80"
+                   alt="Owen Smith" class="w-full aspect-[5/5.4] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                   loading="lazy" onerror="imgFallback(this)" />
+            </div>
+            <div class="p-4 text-center flex flex-col flex-1">
+              <h3 class="font-display font-bold text-brand text-[17px]">Owen Smith</h3>
+              <p class="mt-1 text-[13px] text-slate-500 leading-snug flex-1">WIDS Learning Design Consultant</p>
+              <a href="#experts" class="btn btn-primary !py-2.5 !px-3 !text-[13px] mt-4 w-full"><i class="fa-regular fa-eye"></i> View Profile</a>
+            </div>
+          </article>
+
+          <article class="lift group bg-white rounded-xl border border-slate-200 shadow-soft overflow-hidden w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-16px)] flex flex-col reveal" style="--d:240ms">
+            <div class="overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&h=560&q=80"
+                   alt="Lynn Neitzel" class="w-full aspect-[5/5.4] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                   loading="lazy" onerror="imgFallback(this)" />
+            </div>
+            <div class="p-4 text-center flex flex-col flex-1">
+              <h3 class="font-display font-bold text-brand text-[17px]">Lynn Neitzel</h3>
+              <p class="mt-1 text-[13px] text-slate-500 leading-snug flex-1">WIDS Learning Design Consultant</p>
+              <a href="#experts" class="btn btn-primary !py-2.5 !px-3 !text-[13px] mt-4 w-full"><i class="fa-regular fa-eye"></i> View Profile</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         9. PRE-FOOTER CTA BANNER
+         ===================================================================== -->
+    <section class="relative bg-navy-800 overflow-hidden">
+      <!-- Curved swooshes (left + right edges) -->
+      <svg class="hidden sm:block absolute left-0 top-0 h-full w-40 md:w-56 lg:w-72" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,18 C120,38 180,118 160,200 L128,200 C146,128 100,62 0,50 Z" fill="#1E5BB8" />
+        <path d="M0,96 C58,110 92,150 84,200 L0,200 Z" fill="#E8EEF7" />
+        <path d="M0,76 C80,92 124,140 112,200" fill="none" stroke="#9CC3EC" stroke-width="3" />
+      </svg>
+      <svg class="hidden sm:block absolute right-0 top-0 h-full w-40 md:w-56 lg:w-72" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M300,96 C220,108 170,150 160,200 L300,200 Z" fill="#1E5BB8" />
+        <path d="M300,130 C246,138 214,166 206,200 L300,200 Z" fill="#E8EEF7" />
+      </svg>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
+        <h2 class="font-display font-semibold text-white text-3xl sm:text-4xl leading-tight max-w-xl reveal">
+          Performance-Based Curriculum for Real-World Results
+        </h2>
+        <div class="flex flex-col sm:flex-row gap-3 reveal" style="--d:120ms">
+          <a href="contact-us.html" class="btn btn-light !px-7">Request a Consultation</a>
+          <a href="#programs" class="btn btn-ghost-light !px-7">Explore Our Programs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       10. FOOTER
+       ===================================================================== -->
+  <footer id="contact" class="relative bg-navy-800 text-white/80 border-t border-white/10 overflow-hidden">
+    <!-- faint dot texture -->
+    <div class="absolute inset-0 opacity-[.07] pointer-events-none" style="background-image:radial-gradient(#fff 1px,transparent 1.4px);background-size:18px 18px" aria-hidden="true"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16 grid sm:grid-cols-2 lg:grid-cols-12 gap-10">
+      <!-- Col 1: brand -->
+      <div class="lg:col-span-4">
+        <a href="#home" class="inline-flex items-center gap-2.5" aria-label="De Square Global home">
+          <span class="w-11 h-11 rounded-lg bg-brand grid place-items-center text-white text-lg"><i class="fa-solid fa-graduation-cap"></i></span>
+          <span class="leading-tight">
+            <span class="block font-display font-bold text-white text-lg">De Square Global</span>
+            <span class="block text-[9px] font-medium text-sky-300 tracking-wide uppercase">For Education Consulting Services</span>
+          </span>
+        </a>
+        <p class="mt-5 text-sm leading-relaxed max-w-xs">
+          Let's design your next industry-aligned curriculum together. Contact De Square Global today.
+        </p>
+        <!-- Social links (replace # with your profile URLs) -->
+        <div class="mt-6 flex flex-wrap gap-2.5">
+          <a href="#" aria-label="Facebook"  class="w-9 h-9 rounded-md bg-white text-navy grid place-items-center hover:bg-brand hover:text-white hover:-translate-y-1 transition"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-md bg-white text-navy grid place-items-center hover:bg-brand hover:text-white hover:-translate-y-1 transition"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"    class="w-9 h-9 rounded-md bg-white text-navy grid place-items-center hover:bg-brand hover:text-white hover:-translate-y-1 transition"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="X"         class="w-9 h-9 rounded-md bg-white text-navy grid place-items-center hover:bg-brand hover:text-white hover:-translate-y-1 transition"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Snapchat"  class="w-9 h-9 rounded-md bg-white text-navy grid place-items-center hover:bg-brand hover:text-white hover:-translate-y-1 transition"><i class="fa-brands fa-snapchat"></i></a>
+          <a href="#" aria-label="LinkedIn"  class="w-9 h-9 rounded-md bg-white text-navy grid place-items-center hover:bg-brand hover:text-white hover:-translate-y-1 transition"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"   class="w-9 h-9 rounded-md bg-white text-navy grid place-items-center hover:bg-brand hover:text-white hover:-translate-y-1 transition"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Col 2: quick links -->
+      <div class="lg:col-span-2">
+        <h3 class="font-display font-semibold text-white text-lg">Quick Links</h3>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li><a href="about-us.html" class="hover:text-white hover:pl-1 transition-all">About us</a></li>
+          <li><a href="our-clients.html" class="hover:text-white hover:pl-1 transition-all">Trusted By</a></li>
+          <li><a href="delivery-options-booking.html" class="hover:text-white hover:pl-1 transition-all">Delivery Options</a></li>
+          <li><a href="contact-us.html" class="hover:text-white hover:pl-1 transition-all">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: programs -->
+      <div class="lg:col-span-3">
+        <h3 class="font-display font-semibold text-white text-lg">Programs</h3>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li><a href="wids-dacum-facilitator-certificate.html" class="hover:text-white hover:pl-1 transition-all">WIDS DACUM Facilitator Workshop</a></li>
+          <li><a href="wids-course-design-workshop.html" class="hover:text-white hover:pl-1 transition-all">WIDS Course Design Workshop</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: contact -->
+      <div class="lg:col-span-3">
+        <h3 class="font-display font-semibold text-white text-lg">Contact Us</h3>
+        <ul class="mt-5 space-y-3.5 text-sm">
+          <li>
+            <a href="https://wa.me/96592298828" target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-white transition">
+              <i class="fa-brands fa-whatsapp w-4 text-center text-base"></i> +965 9229 8828
+            </a>
+          </li>
+          <li>
+            <a href="tel:+96592298828" class="flex items-center gap-3 hover:text-white transition">
+              <i class="fa-solid fa-phone w-4 text-center"></i> +965 9229 8828
+            </a>
+          </li>
+          <li>
+            <a href="mailto:info@desquareglobal.com" class="flex items-center gap-3 hover:text-white transition break-all">
+              <i class="fa-solid fa-envelope w-4 text-center"></i> info@desquareglobal.com
+            </a>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot w-4 text-center mt-0.5"></i>
+            <span>Plot 6, Block 14, Yaqoub Tower, Qibla, Kuwait</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="relative bg-white text-center text-sm text-navy py-4 px-4">
+      All Resolved by <a href="#home" class="text-brand font-semibold hover:underline">Dsquare Global</a> | 2026
+    </div>
+  </footer>
+
+  <!-- Floating contact buttons -->
+  <div class="fixed bottom-5 right-4 sm:right-5 z-40 flex flex-col gap-3">
+    <a href="tel:+96592298828" aria-label="Call us"
+       class="w-12 h-12 rounded-full bg-green-500 text-white grid place-items-center shadow-lg hover:bg-green-600 hover:scale-110 transition">
+      <i class="fa-solid fa-phone"></i>
+    </a>
+    <a href="https://wa.me/96592298828" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+       class="pulse relative isolate w-12 h-12 rounded-full bg-green-500 text-white grid place-items-center shadow-lg hover:bg-green-600 hover:scale-110 transition">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+  </div>
+
+  <!-- =====================================================================
+       SCRIPTS (vanilla JS)
+       ===================================================================== -->
+  <script>
+    (function () {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------- 1. Header shadow on scroll ---------- */
+      const header = document.getElementById('siteHeader');
+      const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ---------- 2. Mobile menu ---------- */
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const setMenu = (open) => {
+        mobileMenu.classList.toggle('open', open);
+        menuBtn.setAttribute('aria-expanded', String(open));
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark text-lg"></i>' : '<i class="fa-solid fa-bars text-lg"></i>';
+      };
+      menuBtn.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+      mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+      window.addEventListener('resize', () => { if (window.innerWidth >= 1280) setMenu(false); });
+
+      /* ---------- 3. Programs dropdown (click / touch / Escape) ---------- */
+      const dd = document.getElementById('programsDropdown');
+      const ddBtn = document.getElementById('programsBtn');
+      ddBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = !dd.classList.contains('open');
+        dd.classList.toggle('open', open);
+        ddBtn.setAttribute('aria-expanded', String(open));
+      });
+      document.addEventListener('click', (e) => {
+        if (!dd.contains(e.target)) { dd.classList.remove('open'); ddBtn.setAttribute('aria-expanded', 'false'); }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          dd.classList.remove('open'); ddBtn.setAttribute('aria-expanded', 'false');
+          if (mobileMenu.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
+        }
+      });
+
+      /* ---------- 4. Active nav link while scrolling ---------- */
+      const navLinks = document.querySelectorAll('nav[aria-label="Primary"] a.nav-link');
+      const sectionIds = ['home', 'about', 'delivery', 'clients', 'contact'];
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      sectionIds.forEach((id) => { const el = document.getElementById(id); if (el) spy.observe(el); });
+
+      /* ---------- 5. Scroll reveal ---------- */
+      const revealEls = document.querySelectorAll('.reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      } else {
+        const revealObs = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach((el) => revealObs.observe(el));
+      }
+
+      /* ---------- 6. Animated counters (stats strip) ---------- */
+      const counters = document.querySelectorAll('.counter');
+      const runCounter = (el) => {
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1400;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const countObs = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) { runCounter(entry.target); obs.unobserve(entry.target); }
+          });
+        }, { threshold: 0.6 });
+        counters.forEach((c) => countObs.observe(c));
+      }
+    })();
+  </script>
+</body>
+</html>

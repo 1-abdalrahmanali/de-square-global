@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact Us – دي سكوير جلوبال</title>
+<link rel="icon" href="https://desquareglobal.com/wp-content/uploads/2026/08/cropped-favicon-270x270.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+
+/* ===================== Base (WordPress theme + Elementor defaults) ===================== */
+:root{
+  --primary:#0D72B9; --secondary:#224A8D; --text:#212E60; --light:#DDE6F1;
+  --accent:#F5F8FC; --white:#FFFFFF; --dark:#17213D; --muted:#59657A;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Cairo",sans-serif;font-size:16px;line-height:1.5;color:#333;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;border:none;vertical-align:middle}
+a{color:#CC3366;text-decoration:none;background:transparent}
+h1,h2,h3,h4,h5,h6{margin:0;font-family:"Cairo",sans-serif}
+p{margin:0 0 .9rem}
+strong,b{font-weight:bolder}
+button,input,select,textarea{font-family:inherit}
+
+/* ===================== Layout: boxed containers ===================== */
+.sec{position:relative;width:100%}
+.in{width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:column}
+.row{display:flex;flex-direction:row}
+.col{display:flex;flex-direction:column;min-width:0}
+.g20{gap:20px}
+
+/* ===================== Typography helpers ===================== */
+.eb{font-weight:700;font-size:16px;line-height:16px;margin:0}
+.t{margin:0}
+.c-sec{color:#224A8D}.c-pri{color:#0D72B9}.c-mut{color:#59657A}.c-wh{color:#FFFFFF}.c-acc{color:#F5F8FC}
+.c-lt{color:#DDE6F1}.c-txt{color:#212E60}.c-dk{color:#17213D}.c-e8{color:#E8F2FA}
+.ta-c{text-align:center}
+.txt a{color:#0D72B9}
+.txt.l-wh a{color:#FFFFFF}.txt.l-acc a{color:#F5F8FC}.txt.l-lt a{color:#DDE6F1}.txt.l-txt a{color:#212E60}.txt.l-pink a{color:#CC3366}
+
+/* ===================== Buttons (Elementor button widget) ===================== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-family:"Roboto",sans-serif;font-size:15px;font-weight:500;line-height:1;
+  padding:18px;border-radius:4px;background:var(--bg);color:var(--fg);border:var(--bw,0) solid var(--bd,transparent);transition:all .3s;cursor:pointer;text-align:center}
+.btn:hover,.btn:focus{background:var(--hbg,var(--bg));color:var(--hfg,var(--fg))}
+.btn i{font-size:15px;line-height:1}
+.btn-wrap{display:flex}
+.btn-wrap.al-c{justify-content:center}.btn-wrap.al-r{justify-content:flex-end}
+.btn-wrap.full .btn{width:100%}
+
+/* Elementor hover animations */
+.hv-grow{transition-duration:.3s;transition-property:transform,background,color,border-color}
+.hv-grow:hover,.hv-grow:focus,.hv-grow:active{transform:scale(1.1)}
+.hv-shrink{transition-duration:.3s;transition-property:transform}
+.hv-shrink:hover,.hv-shrink:focus,.hv-shrink:active{transform:scale(.9)}
+
+/* ===================== Images ===================== */
+.im{display:block;line-height:0}
+.im img{width:100%;height:auto}
+.r12 img,.r12{border-radius:12px}
+.frame img{border:2px solid var(--fc,#0D72B9);box-shadow:0 0 10px 0 rgba(0,0,0,.5);border-radius:12px}
+
+/* ===================== Icon box ===================== */
+.ib{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+.ib-icon{margin-bottom:15px;line-height:0;flex-shrink:0}
+.ic{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;padding:16px;background:var(--ibg);color:var(--ifg);line-height:1}
+.ic i{font-size:25px;width:25px;height:25px;display:flex;align-items:center;justify-content:center}
+.ib-title{margin:.5rem 0 1rem;font-size:24px;line-height:32.4px;font-weight:700}
+.ib-title a{color:inherit}
+.ib-desc{margin:0;font-size:18px;line-height:29.7px}
+.ib-desc a{color:inherit}
+.ib-inline{flex-direction:row;align-items:flex-start;text-align:left}
+.ib-inline .ib-icon{margin:0 15px 0 0}
+.ib-inline .ib-content{flex:1;min-width:0}
+
+/* ===================== Icon list ===================== */
+.il{list-style:none;margin:0;padding:0}
+.il li{display:flex;align-items:center;font-size:16px;line-height:24px;color:#17213D}
+.il li:not(:last-child){padding-bottom:8px}
+.il li:not(:first-child){margin-top:8px}
+.il li i{font-size:14px;width:17.5px;color:#0D72B9;flex-shrink:0;text-align:center}
+.il li span{padding-left:5px}
+
+/* ===================== Cards used across pages ===================== */
+.card{background:#fff;border:1px solid #E3EBF4;border-radius:18px;box-shadow:0 14px 35px -18px rgba(33,46,96,.2)}
+
+/* ===================== Entrance animations (Elementor "Motion Effects") ===================== */
+.js [data-anim]{visibility:hidden}
+.animated{animation-duration:1.25s}
+.animated.animated-slow{animation-duration:2s}
+.animated.animated-fast{animation-duration:.75s}
+@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+@keyframes fadeInDown{0%{opacity:0;transform:translate3d(0,-100%,0)}100%{opacity:1;transform:none}}
+@keyframes fadeInUp{0%{opacity:0;transform:translate3d(0,100%,0)}100%{opacity:1;transform:none}}
+@keyframes fadeInLeft{0%{opacity:0;transform:translate3d(-100%,0,0)}100%{opacity:1;transform:none}}
+@keyframes fadeInRight{0%{opacity:0;transform:translate3d(100%,0,0)}100%{opacity:1;transform:none}}
+.fadeIn{animation-name:fadeIn}.fadeInDown{animation-name:fadeInDown}.fadeInUp{animation-name:fadeInUp}
+.fadeInLeft{animation-name:fadeInLeft}.fadeInRight{animation-name:fadeInRight}
+@media (prefers-reduced-motion:reduce){.js [data-anim]{visibility:visible}.animated{animation:none!important}}
+
+/* ===================== Image carousel (Elementor image carousel) ===================== */
+.car{position:relative;overflow:hidden;width:100%}
+.car-track{display:flex;align-items:flex-start;transition:transform var(--spd,500ms) ease}
+.car-slide{flex:0 0 100%;text-align:center;padding-bottom:6px}
+.car-slide img{width:100%;height:auto;border-radius:12px}
+.car.fade .car-track{display:grid}
+.car.fade .car-slide{grid-area:1/1;opacity:0;transition:opacity var(--spd,1000ms) ease}
+.car.fade .car-slide.on{opacity:1;z-index:1}
+.car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;background:none;border:0;padding:0;cursor:pointer;color:rgba(237,237,237,.9);font-size:25px;line-height:1;width:25px;height:25px;display:flex;align-items:center;justify-content:center}
+.car-prev{left:10px}.car-next{right:10px}
+.car.dots{padding-bottom:30px}
+.car-dots{position:absolute;bottom:5px;left:0;right:0;display:flex;justify-content:center;gap:12px}
+.car-dots span{width:6px;height:6px;border-radius:50%;background:#000;opacity:.2}
+.car-dots span.on{opacity:1}
+
+/* ===================== HEADER (copied from the live site) ===================== */
+.site-header{position:relative;z-index:50;background:#fff}
+.hdr{display:flex;align-items:stretch;min-height:105px}
+.hdr > div{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:10px}
+.hdr-logo{width:18.25%}
+.hdr-logo img{width:240px}
+.hdr-wids{width:12%}
+.hdr-wids img{width:151px}
+.hdr-menu{width:53.7%}
+.hdr-btn{width:15.05%;align-items:flex-start!important}
+.nav{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.nav > li{position:relative}
+.nav > li > a{display:flex;align-items:center;font-family:"Cairo",sans-serif;font-size:16px;line-height:16px;font-weight:700;color:#224A8D;margin:0 8px;text-transform:capitalize;transition:color .2s ease-in-out;cursor:pointer}
+.nav > li:hover > a,.nav > li.current > a{color:#0D72B9}
+.nav .caret{font-size:14px;margin-left:10px;line-height:1}
+.nav .sub{position:absolute;top:100%;left:8px;width:225px;list-style:none;margin:0;padding:0;opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .3s ease-in-out,transform .3s linear,visibility .3s;z-index:20}
+.nav > li:hover > .sub,.nav > li:focus-within > .sub{opacity:1;visibility:visible;transform:none}
+.nav .sub a{display:block;font-family:"Cairo",sans-serif;font-size:14px;line-height:21px;font-weight:500;color:#DDE6F1;background:#0D72B9;padding:15px 20px;border-bottom:1px solid #DDE6F1;transition:color .3s ease-in-out}
+.nav .sub li:hover > a{color:#FFFFFF}
+.req-btn{display:inline-block;font-family:"Cairo",sans-serif;font-size:15px;line-height:15px;font-weight:400;color:#fff;background:#0D72B9;padding:15px 30px;border:2px solid #0D72B9;border-radius:4px;transition:.3s ease-in-out}
+.req-btn:hover,.req-btn:focus{color:#0D72B9;background:rgba(255,255,255,0)}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;color:#224A8D;font-size:24px;padding:8px;line-height:1}
+.mnav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:98}
+.mnav{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100%;background:#17213D;transform:translateX(100%);transition:transform .3s ease-in-out;z-index:99;overflow-y:auto;padding-top:60px}
+.mnav-close{position:absolute;top:14px;right:16px;background:none;border:0;color:#fff;font-size:24px;cursor:pointer;line-height:1}
+.mnav ul{list-style:none;margin:0;padding:0}
+.mnav > ul > li > a{display:flex;justify-content:space-between;align-items:center;font-family:"Cairo",sans-serif;font-size:16px;font-weight:700;line-height:16px;color:#B5B5B5;background:#17213D;padding:18px 12px;border-bottom:1px solid rgba(230,230,230,.06);text-transform:capitalize}
+.mnav > ul > li:hover > a{color:#8DC3FF}
+.mnav > ul > li.current > a{color:#2B2B2B;background:#F5F5F5}
+.mnav .msub{display:none}
+.mnav li.open > .msub{display:block}
+.mnav .msub a{display:block;font-family:"Cairo",sans-serif;font-size:14px;font-weight:500;line-height:21px;color:#DDE6F1;background:#0D72B9;padding:15px 20px;border-bottom:1px solid rgba(230,230,230,.06)}
+.mnav .msub li:hover > a{color:#FFFFFF}
+.mnav .msub li.current > a{color:#0D72B9;background:#EFEFEF}
+body.mnav-open .mnav{transform:none}
+body.mnav-open .mnav-overlay{opacity:1;visibility:visible}
+
+/* ===================== FOOTER (copied from the live site) ===================== */
+.ft-cta{background:#212E60 url("https://desquareglobal.com/wp-content/uploads/2026/08/footer.webp") no-repeat;background-size:100% auto;background-position:0 -50px;padding:0 48px;border-bottom:2px solid #0D72B9}
+.ft-cta .in{flex-direction:row;padding:48px 0}
+.ft-cta-l{width:65.2%;padding:10px}
+.ft-cta-l h1{font-size:40px;line-height:40px;font-weight:600;color:#fff}
+.ft-cta-r{width:34.8%;padding:10px}
+.ft-cta-r .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ft-main{background:#212E60 url("https://desquareglobal.com/wp-content/uploads/2026/08/footer.webp") no-repeat 50% 100%;background-size:cover;padding:0 24px;margin-top:-1px}
+.ft-main .in{flex-direction:row;align-items:flex-start;padding:48px 0}
+.ft-c1{width:39.8%;padding:10px;display:flex;flex-direction:column;gap:20px}
+.ft-c1 > a{display:block;height:105px}
+.ft-c1 img{width:300px}
+.ft-c1 p{font-size:16px;line-height:24px;color:#DDE6F1}
+.ft-col{width:20.1%;padding:10px;display:flex;flex-direction:column;gap:20px}
+.ft-col h5{font-size:20px;line-height:20px;font-weight:700;color:#fff}
+.ft-links{list-style:none;margin:0;padding:0}
+.ft-links li:not(:last-child){padding-bottom:5px}
+.ft-links li:not(:first-child){margin-top:5px}
+.ft-links a,.ft-links span{font-size:16px;line-height:24px;color:#DDE6F1;transition:color .3s}
+.ft-links a:hover{color:#5BBBFF}
+.ft-contact li{display:flex;align-items:flex-start}
+.ft-contact li:not(:last-child){padding-bottom:3px}
+.ft-contact li:not(:first-child){margin-top:3px}
+.ft-contact i{font-size:20px;width:25px;color:#DDE6F1;margin-top:2px;flex-shrink:0;text-align:center}
+.ft-contact a,.ft-contact span.tx{padding-left:5px}
+.ft-social{display:flex;flex-wrap:wrap;gap:0 15px}
+.ft-social a{width:32px;height:32px;border-radius:10%;background:#DDE6F1;color:#212E60;display:flex;align-items:center;justify-content:center;font-size:20px}
+.ft-bottom{background:#DDE6F1;padding:0 10px}
+.ft-bottom .in{padding:10px 0}
+.ft-bottom div.tx{font-size:16px;line-height:24px;color:#212E60;text-align:center;font-weight:700}
+.ft-bottom a{color:#0D72B9}
+
+/* Floating call / WhatsApp buttons (as on the live site) */
+.float-btns{position:fixed;right:20px;bottom:20px;z-index:40;display:flex;flex-direction:column;gap:12px}
+.float-btns a{width:48px;height:48px;border-radius:50%;background:#22C55E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,.2);transition:transform .2s,background .2s}
+.float-btns a:hover{transform:scale(1.1);background:#16A34A}
+.float-btns a.wa i{font-size:26px}
+
+/* ===================== Responsive: header + footer ===================== */
+@media (max-width:1024px){
+  .nav{display:none}
+  .nav-toggle{display:inline-flex}
+  .hdr-menu{align-items:flex-end!important;width:auto;flex:1}
+  .hdr-btn{width:auto;flex:0 0 auto}
+  .ft-cta .in,.ft-main .in{flex-direction:column}
+  .ft-cta-l,.ft-cta-r,.ft-c1,.ft-col{width:100%}
+}
+@media (max-width:767px){
+  .hdr{min-height:85px}
+  .hdr-logo{width:auto;flex:0 0 auto}
+  .hdr-logo img{width:151px}
+  .hdr-wids{width:auto;flex:0 0 auto}
+  .hdr-wids img{width:94px}
+  .hdr-menu{width:auto;flex:1}
+  .hdr-btn{display:none!important}
+  .ft-cta{padding:0 24px}
+  .ft-cta-l h1{font-size:32px;line-height:32px}
+  .ft-main{padding:0 10px}
+}
+
+/* ===================== This page ===================== */
+
+/* 1. Hero */
+.ct-hero{background:url("https://desquareglobal.com/wp-content/uploads/2026/08/ChatGPT-Image-Aug-6-2026-07_23_27-PM.webp") center/cover no-repeat;min-height:720px;display:flex}
+.ct-hero::before{content:"";position:absolute;inset:0;background:#000;opacity:.24}
+.ct-hero .in{position:relative;max-width:1300px;flex-direction:row;align-items:center}
+.ct-hero .c1{width:48.4%;padding:10px;gap:20px}
+.ct-hero .c2{width:50%;padding:10px}
+.ct-hero h1{font-size:65px;line-height:65px;font-weight:700;color:#FFFFFF;margin-top:-13px}
+.ct-hero .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ct-hero .btn{width:100%}
+
+/* 2. Get in touch + form */
+.ct-main{padding:0 10px;margin-top:40px}
+.ct-main .in{padding:10px 0;flex-direction:row;gap:24px}
+.ct-main .c1{width:49%;padding:10px;gap:20px}
+.ct-main h2{font-size:32px;line-height:32px;font-weight:700;color:#0D72B9}
+.ct-main .lead{font-size:16px;line-height:24px;color:#212E60}
+.ct-box{background:#DDE6F1;border-radius:8px;padding:12px}
+.ct-box.first{padding:12px 0 12px 24px}
+.ct-box .ib{align-items:center}
+.ct-box .ib-icon{line-height:0}
+.ct-box .ib-icon i{font-size:50px;width:50px;height:50px;color:#0D72B9;display:flex;align-items:center;justify-content:center}
+.ct-box .ib-title{font-size:28px;line-height:33.6px;font-weight:600;color:#0D72B9}
+.ct-box .ib-desc{font-size:16px;line-height:24px;color:#212E60}
+.ct-main .c2{width:49.1%;background:#212E60;padding:48px;border-radius:12px;gap:20px}
+
+/* Contact form (Elementor form styling) */
+.cf{display:flex;flex-wrap:wrap;margin:0 -5px;row-gap:31px}
+.cf-g{padding:0 5px;width:100%}
+.cf-g.half{width:50%}
+.sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);border:0}
+.cf input[type=text],.cf input[type=email],.cf input[type=tel],.cf select,.cf textarea{width:100%;background:#fff;border:1px solid #69727D;border-radius:3px;font-family:"Cairo",sans-serif;font-size:15px;line-height:21px;color:#212E60;outline:none}
+.cf input[type=text],.cf input[type=email],.cf input[type=tel]{height:40px;padding:8px 16px}
+.cf select{height:40px;padding:5px 20px 5px 14px;font-size:16px}
+.cf textarea{height:96px;padding:5px 14px;resize:vertical;display:block}
+.cf input,.cf select{display:block}
+.cf input:focus,.cf select:focus,.cf textarea:focus{box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.cf .opts{display:flex;flex-direction:column}
+.cf .opt{display:flex;align-items:center;height:24px}
+.cf .opt input{margin:0 4px 0 0;width:13px;height:13px}
+.cf .opt label{font-family:"Cairo",sans-serif;font-size:16px;line-height:30px;color:#DDE6F1;cursor:pointer}
+.cf .btn{width:100%}
+.cf-status{width:100%;margin:0 5px;font-size:15px;line-height:22px;color:#DDE6F1}
+.ct-note{list-style:none;margin:0;padding:0}
+.ct-note li{display:flex;align-items:center;font-family:"Roboto",sans-serif;font-size:16px;line-height:24px;color:#DDE6F1}
+.ct-note i{font-size:14px;width:17.5px;color:#FFFFFF;text-align:center}
+.ct-note span{padding-left:5px}
+
+/* 3. Map */
+.ct-map{padding:0 10px}
+.ct-map .in{padding:10px 0}
+.ct-map iframe{width:100%;height:300px;border:0;display:block}
+
+@media (max-width:767px){
+  .ct-hero{min-height:487px;padding:0 24px}
+  .ct-hero .in{padding:24px 0;flex-direction:column;justify-content:center}
+  .ct-hero .c1{width:100%;padding:0}
+  .ct-hero .c2{display:none}
+  .ct-hero h1{font-size:36px;line-height:36px}
+  .ct-main .in{flex-direction:column}
+  .ct-main .c1,.ct-main .c2{width:100%}
+  .ct-main .c2{padding:24px}
+  .ct-main h2,.ct-main .lead{text-align:center}
+  .ct-box .ib{flex-direction:column;text-align:center}
+  .ct-box .ib-icon{margin:0 0 15px}
+  .ct-box.first{padding:12px}
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <a href="index.html" aria-label="De Square Global home"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/logo-1.webp" alt="De Square Global" /></a>
+    </div>
+    <div class="hdr-wids">
+      <a href="https://www.wids.org/" aria-label="WIDS"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/wids-e1790802950941.webp" alt="WIDS" /></a>
+    </div>
+    <div class="hdr-menu">
+      <nav aria-label="Main menu">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="delivery-options-booking.html">Delivery Options &amp; Booking</a></li>
+          <li><a href="our-clients.html">Our Clients</a></li>
+          <li class="has-sub"><a href="#" aria-haspopup="true">Programs<i class="fa-solid fa-angle-down caret" aria-hidden="true"></i></a>
+            <ul class="sub">
+              <li><a href="wids-dacum-facilitator-certificate.html">WIDS DACUM Facilitator Certificate</a></li>
+              <li><a href="wids-course-design-workshop.html">WIDS Course Design Workshop</a></li>
+            </ul>
+          </li>
+          <li class="current"><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    </div>
+    <div class="hdr-btn">
+      <a class="req-btn" href="contact-us.html">Request a Book</a>
+    </div>
+  </div>
+
+  <!-- Mobile / tablet menu -->
+  <div class="mnav-overlay"></div>
+  <nav class="mnav" aria-label="Mobile menu">
+    <button type="button" class="mnav-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="delivery-options-booking.html">Delivery Options &amp; Booking</a></li>
+      <li><a href="our-clients.html">Our Clients</a></li>
+      <li class="has-sub"><a href="#">Programs<i class="fa-solid fa-angle-down" aria-hidden="true"></i></a>
+        <ul class="msub">
+          <li><a href="wids-dacum-facilitator-certificate.html">WIDS DACUM Facilitator Certificate</a></li>
+          <li><a href="wids-course-design-workshop.html">WIDS Course Design Workshop</a></li>
+        </ul>
+      </li>
+      <li class="current"><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- 1. Hero -->
+<section class="sec ct-hero">
+  <div class="in">
+    <div class="col c1">
+      <p class="eb c-lt" data-anim="fadeInDown">CONTACT US</p>
+      <h1 class="t" data-anim="fadeIn">Let's Start the <br />Conversation</h1>
+      <div class="grid2">
+        <div class="btn-wrap full" data-anim="fadeInLeft"><a class="btn" href="tel:+96592298828" style="--bg:#0D72B9;--fg:#DDE6F1;--hbg:#212E60;--hfg:#DDE6F1"><i class="fa-solid fa-phone" aria-hidden="true"></i>Call Us Now</a></div>
+        <div class="btn-wrap full" data-anim="fadeInUp" data-speed="slow"><a class="btn" href="https://wa.me/96592298828" style="--bg:#F5F8FC;--fg:#0D72B9;--bw:2px;--bd:#0D72B9;--hbg:#0D72B9;--hfg:#DDE6F1"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Quick Chat</a></div>
+      </div>
+    </div>
+    <div class="col c2"></div>
+  </div>
+</section>
+
+<!-- 2. Get in touch + contact form -->
+<section class="sec ct-main">
+  <div class="in">
+    <div class="col c1">
+      <h2 class="t">GET IN TOUCH</h2>
+      <div class="lead"><p>Choose the best way to reach us.</p></div>
+      <div class="ct-box first">
+        <div class="ib ib-inline">
+          <div class="ib-icon"><i class="fa-solid fa-inbox" aria-hidden="true"></i></div>
+          <div class="ib-content"><h3 class="ib-title"><a href="mailto:info@desquareglobal.com">Email Us</a></h3><p class="ib-desc">info@desquareglobal.com <br />We'll get back to you as soon as possible.</p></div>
+        </div>
+      </div>
+      <div class="ct-box">
+        <div class="ib ib-inline">
+          <div class="ib-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></div>
+          <div class="ib-content"><h3 class="ib-title"><a href="tel:+96592298828">Call Us</a></h3><p class="ib-desc">+965 9229 8828 <br />Sun - Thu | 8:00 AM - 4:00 PM (KWT)</p></div>
+        </div>
+      </div>
+      <div class="ct-box">
+        <div class="ib ib-inline">
+          <div class="ib-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+          <div class="ib-content"><h3 class="ib-title">Our Office</h3><p class="ib-desc">Plot 6, Block 14, Hamad Al-Saqr Street, Yaqoub Tower, Qibla, Kuwait,</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col c2">
+      <!-- The live site sends this form through WordPress. A static page cannot send email by itself:
+           with data-endpoint empty, "Send" opens the visitor's email app with the message filled in,
+           addressed to data-mailto. To receive messages directly, paste a Formspree or Web3Forms
+           form URL into data-endpoint. -->
+      <form class="cf" id="contactForm" data-endpoint="" data-mailto="info@desquareglobal.com">
+        <div class="cf-g"><label class="sr" for="form-field-name">Full Name</label><input type="text" name="name" id="form-field-name" placeholder="Full Name" required /></div>
+        <div class="cf-g half"><label class="sr" for="form-field-email">Email Address</label><input type="email" name="email" id="form-field-email" placeholder="Email Address" required /></div>
+        <div class="cf-g half"><label class="sr" for="form-field-phone">Phone Number</label><input type="tel" name="phone" id="form-field-phone" placeholder="Phone Number" required /></div>
+        <div class="cf-g"><label class="sr" for="form-field-org">Organization / Institution</label><select name="organization" id="form-field-org"><option value="Individual">Individual</option><option value="Company/Institution">Company/Institution</option></select></div>
+        <div class="cf-g"><span class="sr">I'm interested in:</span>
+          <div class="opts">
+            <div class="opt"><input type="checkbox" name="interest" value="WIDS DACUM Facilitator Workshop" id="form-int-0" /><label for="form-int-0">WIDS DACUM Facilitator Workshop</label></div>
+            <div class="opt"><input type="checkbox" name="interest" value="WIDS Course Design Workshop" id="form-int-1" /><label for="form-int-1">WIDS Course Design Workshop</label></div>
+            <div class="opt"><input type="checkbox" name="interest" value="General Inquiry" id="form-int-2" /><label for="form-int-2">General Inquiry</label></div>
+          </div>
+        </div>
+        <div class="cf-g"><label class="sr" for="form-field-subject">Subject</label><input type="text" name="subject" id="form-field-subject" placeholder="How can we help you?" /></div>
+        <div class="cf-g"><label class="sr" for="form-field-message">Message</label><textarea name="message" id="form-field-message" rows="4" placeholder="Message"></textarea></div>
+        <div class="cf-g"><button type="submit" class="btn" style="--bg:#0D72B9;--fg:#FFFFFF;--hfg:#FFFFFF">Send</button></div>
+        <div class="cf-status" id="formStatus" role="status" aria-live="polite" hidden></div>
+      </form>
+      <ul class="ct-note"><li><i class="fa-solid fa-user-shield" aria-hidden="true"></i><span>Your information is secure and will never be shared.</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Map -->
+<section class="sec ct-map">
+  <div class="in">
+    <iframe loading="lazy" src="https://maps.google.com/maps?q=Yaqoub%20Tower%2C%20Qibla%2C%20Kuwait%2C%20&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" title="Yaqoub Tower, Qibla, Kuwait," aria-label="Yaqoub Tower, Qibla, Kuwait,"></iframe>
+  </div>
+</section>
+
+<script>
+/* Contact form: sends to data-endpoint when set, otherwise opens the visitor's email app */
+(function () {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  var status = document.getElementById('formStatus');
+  var to = form.getAttribute('data-mailto');
+  function show(msg) { status.innerHTML = msg; status.hidden = false; }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var d = new FormData(form);
+    var ep = (form.getAttribute('data-endpoint') || '').trim();
+    if (ep) {
+      fetch(ep, { method: 'POST', body: d, headers: { Accept: 'application/json' } })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); show('Your submission was successful.'); })
+        .catch(function () { show('There’s something wrong. Please email us at <a href="mailto:' + to + '" style="color:#fff;text-decoration:underline">' + to + '</a>.'); });
+      return;
+    }
+    var body = ['Full Name: ' + d.get('name'), 'Email: ' + d.get('email'), 'Phone: ' + d.get('phone'),
+      'Organization / Institution: ' + d.get('organization'), "I'm interested in: " + (d.getAll('interest').join(', ') || '-'), '', d.get('message') || ''].join('\n');
+    window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(d.get('subject') || 'Website inquiry') + '&body=' + encodeURIComponent(body);
+    show('Your email app should open with your message ready to send.');
+  });
+})();
+</script>
+
+</main>
+
+<footer class="site-footer">
+  <!-- Footer call to action -->
+  <div class="sec ft-cta">
+    <div class="in">
+      <div class="ft-cta-l"><h1>Performance - Based curriculum for Real- World Results</h1></div>
+      <div class="ft-cta-r">
+        <div class="grid2">
+          <div class="btn-wrap al-r" data-anim="fadeInLeft"><a class="btn hv-grow" href="contact-us.html" style="--bg:#F5F8FC;--fg:#212E60;--hbg:#FFFFFF;--hfg:#212E60">Request a Consultation</a></div>
+          <div class="btn-wrap" data-anim="fadeInUp" data-speed="slow"><a class="btn" href="index.html#programs" style="--bg:transparent;--fg:#F5F8FC;--bw:2px;--bd:#F5F8FC;--hbg:#FFFFFF;--hfg:#0D72B9">Explore Our Programs</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer columns -->
+  <div class="sec ft-main">
+    <div class="in">
+      <div class="ft-c1">
+        <a href="index.html"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/logo-1-300x98.webp" alt="De Square Global" /></a>
+        <p>Let’s design your next industry-aligned curriculum together. Contact De Square Global today.</p>
+        <div class="ft-social">
+          <a href="https://facebook.com/desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@de.square.global" target="_blank" rel="noopener" class="hv-shrink" aria-label="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://x.com/DeSquareGlobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="X-twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.snapchat.com/add/desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Snapchat"><i class="fa-brands fa-snapchat"></i></a>
+          <a href="https://www.linkedin.com/company/de-square-global/" target="_blank" rel="noopener" class="hv-shrink" aria-label="Linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://youtube.com/@desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h5>Quick Links</h5>
+        <ul class="ft-links">
+          <li><a href="about-us.html">About us</a></li>
+          <li><a href="our-clients.html">Trusted By</a></li>
+          <li><a href="delivery-options-booking.html">Delivery Options</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Programs</h5>
+        <ul class="ft-links">
+          <li><a href="wids-dacum-facilitator-certificate.html">WIDS DACUM Facilitator Workshop</a></li>
+          <li><a href="wids-course-design-workshop.html">WIDS Course Design Workshop</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Contact Us</h5>
+        <ul class="ft-links ft-contact">
+          <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/96592298828">+ 965 9229 8828</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+96592298828">+ 965 9229 8828</a></li>
+          <li><i class="fa-solid fa-envelopes-bulk"></i><a href="mailto:info@desquareglobal.com">info@desquareglobal.com</a></li>
+          <li><i class="fa-solid fa-location-dot"></i><span class="tx">Plot 6, Block 14، Yaqoub Tower, Qibla, Kuwait</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="sec ft-bottom">
+    <div class="in">
+      <div class="tx"><strong>All rights reserved to the company © 2026 | <a href="index.html">Dsquare Global</a></strong></div>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a href="tel:+96592298828" aria-label="Call us"><i class="fa-solid fa-phone"></i></a>
+  <a href="https://wa.me/96592298828" class="wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+<script>
+
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Entrance animations: same names, timings and delays as the live site ---------- */
+  var els = document.querySelectorAll('[data-anim]');
+  function play(el) {
+    var d = parseInt(el.getAttribute('data-delay') || '0', 10);
+    setTimeout(function () {
+      el.classList.add('animated', el.getAttribute('data-anim'));
+      var sp = el.getAttribute('data-speed');
+      if (sp) el.classList.add('animated-' + sp);
+      el.style.visibility = 'visible';
+    }, d);
+  }
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.style.visibility = 'visible'; });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { play(en.target); io.unobserve(en.target); } });
+    });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Mobile / tablet menu (slides in from the right) ---------- */
+  var body = document.body;
+  var tgl = document.querySelector('.nav-toggle');
+  var cls = document.querySelector('.mnav-close');
+  var ov = document.querySelector('.mnav-overlay');
+  function setMenu(open) { body.classList.toggle('mnav-open', open); if (tgl) tgl.setAttribute('aria-expanded', String(open)); }
+  if (tgl) tgl.addEventListener('click', function () { setMenu(true); });
+  if (cls) cls.addEventListener('click', function () { setMenu(false); });
+  if (ov) ov.addEventListener('click', function () { setMenu(false); });
+  document.querySelectorAll('.mnav .has-sub > a').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); a.parentElement.classList.toggle('open'); });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  document.querySelectorAll('.nav .has-sub > a').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); });
+  });
+
+  /* ---------- Image carousels (autoplay, loop, pause on hover, arrows, slide or fade) ---------- */
+  document.querySelectorAll('.car').forEach(function (car) {
+    var track = car.querySelector('.car-track');
+    var slides = Array.prototype.slice.call(car.querySelectorAll('.car-slide'));
+    var n = slides.length;
+    if (n < 2) return;
+    var fade = car.classList.contains('fade');
+    var delay = parseInt(car.getAttribute('data-autoplay') || '5000', 10);
+    var speed = parseInt(car.getAttribute('data-speed') || '500', 10);
+    car.style.setProperty('--spd', speed + 'ms');
+    var i = 0, timer = null, busy = false;
+    if (fade) {
+      slides[0].classList.add('on');
+    } else {
+      track.appendChild(slides[0].cloneNode(true));   // seamless loop
+    }
+    function go(next) {
+      if (busy) return;
+      if (fade) {
+        slides[i].classList.remove('on');
+        i = (next + n) % n;
+        slides[i].classList.add('on');
+        return;
+      }
+      if (next < 0) {          // jump to the clone, then slide back one
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(' + (-n * 100) + '%)';
+        track.offsetHeight;
+        track.style.transition = '';
+        next = n - 1;
+      }
+      busy = true;
+      i = next;
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+    }
+    track.addEventListener('transitionend', function () {
+      busy = false;
+      if (!fade && i >= n) {
+        track.style.transition = 'none';
+        i = 0;
+        track.style.transform = 'translateX(0)';
+        track.offsetHeight;
+        track.style.transition = '';
+      }
+    });
+    function start() { if (!reduce) { stop(); timer = setInterval(function () { go(i + 1); }, delay); } }
+    function stop() { if (timer) clearInterval(timer); timer = null; }
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    var p = car.querySelector('.car-prev'), nx = car.querySelector('.car-next');
+    if (p) p.addEventListener('click', function () { go(i - 1); start(); });
+    if (nx) nx.addEventListener('click', function () { go(i + 1); start(); });
+    start();
+  });
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WIDS DACUM Facilitator Workshop – دي سكوير جلوبال</title>
+<link rel="icon" href="https://desquareglobal.com/wp-content/uploads/2026/08/cropped-favicon-270x270.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+
+/* ===================== Base (WordPress theme + Elementor defaults) ===================== */
+:root{
+  --primary:#0D72B9; --secondary:#224A8D; --text:#212E60; --light:#DDE6F1;
+  --accent:#F5F8FC; --white:#FFFFFF; --dark:#17213D; --muted:#59657A;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Cairo",sans-serif;font-size:16px;line-height:1.5;color:#333;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;border:none;vertical-align:middle}
+a{color:#CC3366;text-decoration:none;background:transparent}
+h1,h2,h3,h4,h5,h6{margin:0;font-family:"Cairo",sans-serif}
+p{margin:0 0 .9rem}
+strong,b{font-weight:bolder}
+button,input,select,textarea{font-family:inherit}
+
+/* ===================== Layout: boxed containers ===================== */
+.sec{position:relative;width:100%}
+.in{width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:column}
+.row{display:flex;flex-direction:row}
+.col{display:flex;flex-direction:column;min-width:0}
+.g20{gap:20px}
+
+/* ===================== Typography helpers ===================== */
+.eb{font-weight:700;font-size:16px;line-height:16px;margin:0}
+.t{margin:0}
+.c-sec{color:#224A8D}.c-pri{color:#0D72B9}.c-mut{color:#59657A}.c-wh{color:#FFFFFF}.c-acc{color:#F5F8FC}
+.c-lt{color:#DDE6F1}.c-txt{color:#212E60}.c-dk{color:#17213D}.c-e8{color:#E8F2FA}
+.ta-c{text-align:center}
+.txt a{color:#0D72B9}
+.txt.l-wh a{color:#FFFFFF}.txt.l-acc a{color:#F5F8FC}.txt.l-lt a{color:#DDE6F1}.txt.l-txt a{color:#212E60}.txt.l-pink a{color:#CC3366}
+
+/* ===================== Buttons (Elementor button widget) ===================== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-family:"Roboto",sans-serif;font-size:15px;font-weight:500;line-height:1;
+  padding:18px;border-radius:4px;background:var(--bg);color:var(--fg);border:var(--bw,0) solid var(--bd,transparent);transition:all .3s;cursor:pointer;text-align:center}
+.btn:hover,.btn:focus{background:var(--hbg,var(--bg));color:var(--hfg,var(--fg))}
+.btn i{font-size:15px;line-height:1}
+.btn-wrap{display:flex}
+.btn-wrap.al-c{justify-content:center}.btn-wrap.al-r{justify-content:flex-end}
+.btn-wrap.full .btn{width:100%}
+
+/* Elementor hover animations */
+.hv-grow{transition-duration:.3s;transition-property:transform,background,color,border-color}
+.hv-grow:hover,.hv-grow:focus,.hv-grow:active{transform:scale(1.1)}
+.hv-shrink{transition-duration:.3s;transition-property:transform}
+.hv-shrink:hover,.hv-shrink:focus,.hv-shrink:active{transform:scale(.9)}
+
+/* ===================== Images ===================== */
+.im{display:block;line-height:0}
+.im img{width:100%;height:auto}
+.r12 img,.r12{border-radius:12px}
+.frame img{border:2px solid var(--fc,#0D72B9);box-shadow:0 0 10px 0 rgba(0,0,0,.5);border-radius:12px}
+
+/* ===================== Icon box ===================== */
+.ib{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+.ib-icon{margin-bottom:15px;line-height:0;flex-shrink:0}
+.ic{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;padding:16px;background:var(--ibg);color:var(--ifg);line-height:1}
+.ic i{font-size:25px;width:25px;height:25px;display:flex;align-items:center;justify-content:center}
+.ib-title{margin:.5rem 0 1rem;font-size:24px;line-height:32.4px;font-weight:700}
+.ib-title a{color:inherit}
+.ib-desc{margin:0;font-size:18px;line-height:29.7px}
+.ib-desc a{color:inherit}
+.ib-inline{flex-direction:row;align-items:flex-start;text-align:left}
+.ib-inline .ib-icon{margin:0 15px 0 0}
+.ib-inline .ib-content{flex:1;min-width:0}
+
+/* ===================== Icon list ===================== */
+.il{list-style:none;margin:0;padding:0}
+.il li{display:flex;align-items:center;font-size:16px;line-height:24px;color:#17213D}
+.il li:not(:last-child){padding-bottom:8px}
+.il li:not(:first-child){margin-top:8px}
+.il li i{font-size:14px;width:17.5px;color:#0D72B9;flex-shrink:0;text-align:center}
+.il li span{padding-left:5px}
+
+/* ===================== Cards used across pages ===================== */
+.card{background:#fff;border:1px solid #E3EBF4;border-radius:18px;box-shadow:0 14px 35px -18px rgba(33,46,96,.2)}
+
+/* ===================== Entrance animations (Elementor "Motion Effects") ===================== */
+.js [data-anim]{visibility:hidden}
+.animated{animation-duration:1.25s}
+.animated.animated-slow{animation-duration:2s}
+.animated.animated-fast{animation-duration:.75s}
+@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+@keyframes fadeInDown{0%{opacity:0;transform:translate3d(0,-100%,0)}100%{opacity:1;transform:none}}
+@keyframes fadeInUp{0%{opacity:0;transform:translate3d(0,100%,0)}100%{opacity:1;transform:none}}
+@keyframes fadeInLeft{0%{opacity:0;transform:translate3d(-100%,0,0)}100%{opacity:1;transform:none}}
+@keyframes fadeInRight{0%{opacity:0;transform:translate3d(100%,0,0)}100%{opacity:1;transform:none}}
+.fadeIn{animation-name:fadeIn}.fadeInDown{animation-name:fadeInDown}.fadeInUp{animation-name:fadeInUp}
+.fadeInLeft{animation-name:fadeInLeft}.fadeInRight{animation-name:fadeInRight}
+@media (prefers-reduced-motion:reduce){.js [data-anim]{visibility:visible}.animated{animation:none!important}}
+
+/* ===================== Image carousel (Elementor image carousel) ===================== */
+.car{position:relative;overflow:hidden;width:100%}
+.car-track{display:flex;align-items:flex-start;transition:transform var(--spd,500ms) ease}
+.car-slide{flex:0 0 100%;text-align:center;padding-bottom:6px}
+.car-slide img{width:100%;height:auto;border-radius:12px}
+.car.fade .car-track{display:grid}
+.car.fade .car-slide{grid-area:1/1;opacity:0;transition:opacity var(--spd,1000ms) ease}
+.car.fade .car-slide.on{opacity:1;z-index:1}
+.car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;background:none;border:0;padding:0;cursor:pointer;color:rgba(237,237,237,.9);font-size:25px;line-height:1;width:25px;height:25px;display:flex;align-items:center;justify-content:center}
+.car-prev{left:10px}.car-next{right:10px}
+.car.dots{padding-bottom:30px}
+.car-dots{position:absolute;bottom:5px;left:0;right:0;display:flex;justify-content:center;gap:12px}
+.car-dots span{width:6px;height:6px;border-radius:50%;background:#000;opacity:.2}
+.car-dots span.on{opacity:1}
+
+/* ===================== HEADER (copied from the live site) ===================== */
+.site-header{position:relative;z-index:50;background:#fff}
+.hdr{display:flex;align-items:stretch;min-height:105px}
+.hdr > div{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:10px}
+.hdr-logo{width:18.25%}
+.hdr-logo img{width:240px}
+.hdr-wids{width:12%}
+.hdr-wids img{width:151px}
+.hdr-menu{width:53.7%}
+.hdr-btn{width:15.05%;align-items:flex-start!important}
+.nav{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.nav > li{position:relative}
+.nav > li > a{display:flex;align-items:center;font-family:"Cairo",sans-serif;font-size:16px;line-height:16px;font-weight:700;color:#224A8D;margin:0 8px;text-transform:capitalize;transition:color .2s ease-in-out;cursor:pointer}
+.nav > li:hover > a,.nav > li.current > a{color:#0D72B9}
+.nav .caret{font-size:14px;margin-left:10px;line-height:1}
+.nav .sub{position:absolute;top:100%;left:8px;width:225px;list-style:none;margin:0;padding:0;opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .3s ease-in-out,transform .3s linear,visibility .3s;z-index:20}
+.nav > li:hover > .sub,.nav > li:focus-within > .sub{opacity:1;visibility:visible;transform:none}
+.nav .sub a{display:block;font-family:"Cairo",sans-serif;font-size:14px;line-height:21px;font-weight:500;color:#DDE6F1;background:#0D72B9;padding:15px 20px;border-bottom:1px solid #DDE6F1;transition:color .3s ease-in-out}
+.nav .sub li:hover > a{color:#FFFFFF}
+.req-btn{display:inline-block;font-family:"Cairo",sans-serif;font-size:15px;line-height:15px;font-weight:400;color:#fff;background:#0D72B9;padding:15px 30px;border:2px solid #0D72B9;border-radius:4px;transition:.3s ease-in-out}
+.req-btn:hover,.req-btn:focus{color:#0D72B9;background:rgba(255,255,255,0)}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;color:#224A8D;font-size:24px;padding:8px;line-height:1}
+.mnav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:98}
+.mnav{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100%;background:#17213D;transform:translateX(100%);transition:transform .3s ease-in-out;z-index:99;overflow-y:auto;padding-top:60px}
+.mnav-close{position:absolute;top:14px;right:16px;background:none;border:0;color:#fff;font-size:24px;cursor:pointer;line-height:1}
+.mnav ul{list-style:none;margin:0;padding:0}
+.mnav > ul > li > a{display:flex;justify-content:space-between;align-items:center;font-family:"Cairo",sans-serif;font-size:16px;font-weight:700;line-height:16px;color:#B5B5B5;background:#17213D;padding:18px 12px;border-bottom:1px solid rgba(230,230,230,.06);text-transform:capitalize}
+.mnav > ul > li:hover > a{color:#8DC3FF}
+.mnav > ul > li.current > a{color:#2B2B2B;background:#F5F5F5}
+.mnav .msub{display:none}
+.mnav li.open > .msub{display:block}
+.mnav .msub a{display:block;font-family:"Cairo",sans-serif;font-size:14px;font-weight:500;line-height:21px;color:#DDE6F1;background:#0D72B9;padding:15px 20px;border-bottom:1px solid rgba(230,230,230,.06)}
+.mnav .msub li:hover > a{color:#FFFFFF}
+.mnav .msub li.current > a{color:#0D72B9;background:#EFEFEF}
+body.mnav-open .mnav{transform:none}
+body.mnav-open .mnav-overlay{opacity:1;visibility:visible}
+
+/* ===================== FOOTER (copied from the live site) ===================== */
+.ft-cta{background:#212E60 url("https://desquareglobal.com/wp-content/uploads/2026/08/footer.webp") no-repeat;background-size:100% auto;background-position:0 -50px;padding:0 48px;border-bottom:2px solid #0D72B9}
+.ft-cta .in{flex-direction:row;padding:48px 0}
+.ft-cta-l{width:65.2%;padding:10px}
+.ft-cta-l h1{font-size:40px;line-height:40px;font-weight:600;color:#fff}
+.ft-cta-r{width:34.8%;padding:10px}
+.ft-cta-r .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ft-main{background:#212E60 url("https://desquareglobal.com/wp-content/uploads/2026/08/footer.webp") no-repeat 50% 100%;background-size:cover;padding:0 24px;margin-top:-1px}
+.ft-main .in{flex-direction:row;align-items:flex-start;padding:48px 0}
+.ft-c1{width:39.8%;padding:10px;display:flex;flex-direction:column;gap:20px}
+.ft-c1 > a{display:block;height:105px}
+.ft-c1 img{width:300px}
+.ft-c1 p{font-size:16px;line-height:24px;color:#DDE6F1}
+.ft-col{width:20.1%;padding:10px;display:flex;flex-direction:column;gap:20px}
+.ft-col h5{font-size:20px;line-height:20px;font-weight:700;color:#fff}
+.ft-links{list-style:none;margin:0;padding:0}
+.ft-links li:not(:last-child){padding-bottom:5px}
+.ft-links li:not(:first-child){margin-top:5px}
+.ft-links a,.ft-links span{font-size:16px;line-height:24px;color:#DDE6F1;transition:color .3s}
+.ft-links a:hover{color:#5BBBFF}
+.ft-contact li{display:flex;align-items:flex-start}
+.ft-contact li:not(:last-child){padding-bottom:3px}
+.ft-contact li:not(:first-child){margin-top:3px}
+.ft-contact i{font-size:20px;width:25px;color:#DDE6F1;margin-top:2px;flex-shrink:0;text-align:center}
+.ft-contact a,.ft-contact span.tx{padding-left:5px}
+.ft-social{display:flex;flex-wrap:wrap;gap:0 15px}
+.ft-social a{width:32px;height:32px;border-radius:10%;background:#DDE6F1;color:#212E60;display:flex;align-items:center;justify-content:center;font-size:20px}
+.ft-bottom{background:#DDE6F1;padding:0 10px}
+.ft-bottom .in{padding:10px 0}
+.ft-bottom div.tx{font-size:16px;line-height:24px;color:#212E60;text-align:center;font-weight:700}
+.ft-bottom a{color:#0D72B9}
+
+/* Floating call / WhatsApp buttons (as on the live site) */
+.float-btns{position:fixed;right:20px;bottom:20px;z-index:40;display:flex;flex-direction:column;gap:12px}
+.float-btns a{width:48px;height:48px;border-radius:50%;background:#22C55E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,.2);transition:transform .2s,background .2s}
+.float-btns a:hover{transform:scale(1.1);background:#16A34A}
+.float-btns a.wa i{font-size:26px}
+
+/* ===================== Responsive: header + footer ===================== */
+@media (max-width:1024px){
+  .nav{display:none}
+  .nav-toggle{display:inline-flex}
+  .hdr-menu{align-items:flex-end!important;width:auto;flex:1}
+  .hdr-btn{width:auto;flex:0 0 auto}
+  .ft-cta .in,.ft-main .in{flex-direction:column}
+  .ft-cta-l,.ft-cta-r,.ft-c1,.ft-col{width:100%}
+}
+@media (max-width:767px){
+  .hdr{min-height:85px}
+  .hdr-logo{width:auto;flex:0 0 auto}
+  .hdr-logo img{width:151px}
+  .hdr-wids{width:auto;flex:0 0 auto}
+  .hdr-wids img{width:94px}
+  .hdr-menu{width:auto;flex:1}
+  .hdr-btn{display:none!important}
+  .ft-cta{padding:0 24px}
+  .ft-cta-l h1{font-size:32px;line-height:32px}
+  .ft-main{padding:0 10px}
+}
+
+/* ===================== This page ===================== */
+
+/* 1. Hero */
+.pg-hero{background:linear-gradient(135deg,#F8FBFE 0%,#EAF4FB 100%);padding:0 24px}
+.pg-hero .in{padding:96px 0 84px;flex-direction:row;align-items:center;gap:20px}
+.pg-hero .c1{width:49.5%;padding:20px 36px 20px 0;gap:20px}
+.pg-hero .c2{width:48.9%;padding:10px;justify-content:center}
+.pg-hero .tag{font-size:14px;line-height:17.08px;font-weight:700;color:#0D72B9;margin-bottom:7px}
+.pg-hero h1{font-size:55px;line-height:67.1px;font-weight:800;color:#224A8D;margin-bottom:16px}
+
+/* shared program typography */
+.pg-h2{font-size:42px;line-height:51.24px;font-weight:800;color:#224A8D}
+.pg-txt{font-size:18px;line-height:32.04px;color:#59657A}
+.pg-h3{font-size:28px;line-height:34.16px;font-weight:800;color:#224A8D}
+.frame img{width:100%}
+
+/* 2. About the method / workshop */
+.pg-about{background:#fff;padding:0 24px}
+.pg-about .in{padding:86px 0;flex-direction:row;gap:20px}
+.pg-about .c1{width:44%;padding:10px;justify-content:flex-start}
+.pg-about .c2{width:52%;padding:10px;gap:20px}
+.pg-about .pg-h2{margin-bottom:14px}
+.pg-about .pg-h3{margin:18px 0 8px}
+
+/* 3. Format options / training details */
+.pg-det{background:#F5F8FC;padding:0 58px}
+.pg-det .in{padding:58px 0;flex-direction:row;gap:30px}
+.pg-det .card2{width:50%;background:#fff;padding:30px 26px;border:1px solid #DDE6F1;border-radius:18px;box-shadow:0 16px 38px -22px rgba(33,46,96,.18);display:flex;flex-direction:column;gap:20px}
+.pg-det h2{font-size:32px;line-height:32px;font-weight:600;color:#0D72B9}
+
+/* 4. Certificate */
+.pg-cert{background:linear-gradient(110deg,#212E60 0%,#0D72B9 100%);padding:0 40px}
+.pg-cert .in{padding:66px 0;flex-direction:row;align-items:center;gap:20px}
+.pg-cert .c1,.pg-cert .c2{width:50%;padding:10px}
+.pg-cert .c1{gap:20px}
+.pg-cert h2{font-size:38px;line-height:46.36px;font-weight:800;color:#FFFFFF;margin-bottom:12px}
+.pg-cert .txt{font-size:18px;line-height:31.5px;color:#E8F2FA}
+
+/* 5. 5-day schedule (step flow) */
+.pg-sch{margin:60px 0}
+.pg-sch .in{padding:88px 0;gap:20px}
+.pg-sch h2{font-size:44px;line-height:53.68px;font-weight:800;color:#224A8D;text-align:center}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;padding:10px}
+.step{padding:20px;text-align:center}
+.step-icon{position:relative;display:inline-flex;align-items:center;justify-content:center;width:130px;height:130px;padding:50px;border-radius:50%;background:linear-gradient(#0D72B9 0%,#0D72B9 100%);margin:0 0 20px}
+.step-icon > i{font-size:30px;color:#DDE6F1;width:30px;height:30px;display:flex;align-items:center;justify-content:center}
+.step-line{position:absolute;left:150px;top:65px;width:100px;border-top:2px solid #0D72B9;transform:translateY(-1px)}
+.step-badge{position:absolute;top:0;left:0;background:#224A8D;color:#DDE6F1;font-size:14px;line-height:14px;font-weight:600;padding:8px;border-radius:20px;border:3px solid #fff;white-space:nowrap}
+.step h2.st{font-size:20px;line-height:24px;font-weight:700;color:#224A8D;text-align:center;margin:8px 0 20px}
+.step .sd{font-size:16px;line-height:24px;color:#616161;text-align:center}
+
+/* 6. Workshop competencies */
+.pg-comp{background:#F5F8FC;padding:0 24px}
+.pg-comp .in{padding:88px 0;flex-direction:row;gap:20px}
+.pg-comp .c1{width:55.4%;background:#fff;padding:34px 32px;border:1px solid #DDE6F1;border-radius:20px;box-shadow:0 16px 38px -22px rgba(33,46,96,.18);gap:20px}
+.pg-comp .c2{width:42%;padding:10px;gap:20px}
+.pg-comp .pg-h2{margin-bottom:12px}
+.pg-comp .txt{font-size:18px;line-height:30.6px;color:#59657A}
+.pg-comp ol{list-style:decimal;padding:0 0 0 26px;margin:0;font-family:"Cairo",Arial,sans-serif}
+.pg-comp li{font-size:18px;line-height:30.24px;color:#17213D;padding-left:5px;margin-bottom:10px}
+
+/* 7. Who should attend / prerequisites */
+.pg-aud{padding:0 49px}
+.pg-aud .in{padding:49px 0;flex-direction:row;gap:48px}
+.pg-aud .card2{width:50%;background:#fff;padding:30px 26px;border:1px solid #DDE6F1;border-radius:18px;box-shadow:0 16px 38px -22px rgba(33,46,96,.18);display:flex;flex-direction:column;gap:20px}
+.pg-aud h2{font-size:36px;line-height:43.92px;font-weight:800;color:#224A8D;margin-bottom:10px}
+.pg-aud .pg-h3{margin:24px 0 10px}
+
+/* 8. About WIDS */
+.pg-wids{padding:0 40px}
+.pg-wids .in{padding:66px 0;flex-direction:row;align-items:center;gap:20px}
+.pg-wids .c1,.pg-wids .c2{width:50%;padding:10px}
+.pg-wids .c2{gap:20px}
+.pg-wids .pg-h2{margin-bottom:13px}
+
+/* 9. WIDS in the Middle East */
+.pg-me{background:#fff;padding:0 24px}
+.pg-me .in{padding:88px 0;flex-direction:row;align-items:center;gap:20px}
+.pg-me .c1,.pg-me .c2{width:50%;padding:10px}
+.pg-me .c1{gap:20px}
+.pg-me .pg-h2{margin-bottom:13px}
+
+/* 10. WIDS contact strip */
+.pg-strip{background:#F5F8FC;padding:0 24px}
+.pg-strip .in{padding:38px 0;gap:20px}
+.pg-strip .s1{font-size:18px;line-height:28.8px;font-weight:500;color:#224A8D;text-align:center}
+.pg-strip .s2{font-size:18px;line-height:28.8px;color:#17213D;text-align:center}
+
+@media (max-width:1024px){
+  .pg-cert .in{flex-direction:column;padding:50px 0}
+  .pg-cert .c1,.pg-cert .c2{width:100%}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .step-line{display:none}
+}
+@media (max-width:767px){
+  .pg-hero{padding:0 15px}
+  .pg-hero .in{padding:50px 0 40px;flex-direction:column}
+  .pg-hero .c1{width:100%;padding:0 0 18px}
+  .pg-hero .c2{display:none}
+  .pg-hero .tag,.pg-hero h1{text-align:center}
+  .pg-hero .tag{font-size:12px;line-height:14.64px}
+  .pg-hero h1{font-size:34px;line-height:41.48px}
+  .pg-h2{font-size:29px;line-height:35.38px}
+  .pg-txt{font-size:16px;line-height:28.48px}
+  .pg-h3{font-size:22px;line-height:26.84px}
+  .pg-about{padding:0 15px}
+  .pg-about .in{padding:44px 0;flex-direction:column}
+  .pg-about .c1,.pg-about .c2{width:100%}
+  .pg-det{padding:0 24px}
+  .pg-det .in{padding:24px 0;flex-direction:column}
+  .pg-det .card2{width:100%;padding:23px 18px}
+  .pg-cert{padding:0 18px}
+  .pg-cert .in{padding:38px 0}
+  .pg-cert h2{font-size:27px;line-height:32.94px}
+  .pg-cert .txt{font-size:16px;line-height:28px}
+  .pg-sch h2{font-size:29px;line-height:35.38px}
+  .steps{grid-template-columns:1fr}
+  .pg-comp{padding:0 15px}
+  .pg-comp .in{padding:46px 0;flex-direction:column}
+  .pg-comp .c1,.pg-comp .c2{width:100%}
+  .pg-comp .c1{padding:24px 19px}
+  .pg-comp .pg-h2,.pg-comp .txt{text-align:center}
+  .pg-comp .txt{font-size:16px;line-height:27.2px}
+  .pg-aud{padding:0 12px}
+  .pg-aud .in{flex-direction:column}
+  .pg-aud .card2{width:100%;padding:23px 18px}
+  .pg-aud h2{font-size:27px;line-height:32.94px}
+  .pg-wids .in,.pg-me .in{flex-direction:column}
+  .pg-wids .c1,.pg-wids .c2,.pg-me .c1,.pg-me .c2{width:100%}
+  .pg-me{padding:0 15px}
+  .pg-me .in{padding:46px 0}
+  .pg-strip{padding:0 15px}
+  .pg-strip .in{padding:28px 0}
+  .pg-strip .s1,.pg-strip .s2{font-size:16px;line-height:25.6px}
+}
+
+.pg-wids{background:linear-gradient(110deg,#224A8D 0%,#0D72B9 100%)}
+.pg-wids .pg-h2{color:#F5F8FC}
+.pg-wids .pg-txt{color:#DDE6F1}
+.pg-wids .pg-txt a{color:#DDE6F1}
+.pg-cert .txt a{color:#FFFFFF}
+@media (max-width:767px){
+  .pg-about .pg-h2,.pg-about .pg-txt,.pg-about .pg-h3{text-align:center}
+  .pg-aud .in{padding:12px 0}
+  .pg-wids{padding:0 18px}
+  .pg-wids .in{padding:38px 0}
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <a href="index.html" aria-label="De Square Global home"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/logo-1.webp" alt="De Square Global" /></a>
+    </div>
+    <div class="hdr-wids">
+      <a href="https://www.wids.org/" aria-label="WIDS"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/wids-e1790802950941.webp" alt="WIDS" /></a>
+    </div>
+    <div class="hdr-menu">
+      <nav aria-label="Main menu">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="delivery-options-booking.html">Delivery Options &amp; Booking</a></li>
+          <li><a href="our-clients.html">Our Clients</a></li>
+          <li class="has-sub current"><a href="#" aria-haspopup="true">Programs<i class="fa-solid fa-angle-down caret" aria-hidden="true"></i></a>
+            <ul class="sub">
+              <li class="current"><a href="wids-dacum-facilitator-certificate.html">WIDS DACUM Facilitator Certificate</a></li>
+              <li><a href="wids-course-design-workshop.html">WIDS Course Design Workshop</a></li>
+            </ul>
+          </li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    </div>
+    <div class="hdr-btn">
+      <a class="req-btn" href="contact-us.html">Request a Book</a>
+    </div>
+  </div>
+
+  <!-- Mobile / tablet menu -->
+  <div class="mnav-overlay"></div>
+  <nav class="mnav" aria-label="Mobile menu">
+    <button type="button" class="mnav-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="delivery-options-booking.html">Delivery Options &amp; Booking</a></li>
+      <li><a href="our-clients.html">Our Clients</a></li>
+      <li class="has-sub current"><a href="#">Programs<i class="fa-solid fa-angle-down" aria-hidden="true"></i></a>
+        <ul class="msub">
+          <li class="current"><a href="wids-dacum-facilitator-certificate.html">WIDS DACUM Facilitator Certificate</a></li>
+          <li><a href="wids-course-design-workshop.html">WIDS Course Design Workshop</a></li>
+        </ul>
+      </li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- 1. Hero -->
+<section class="sec pg-hero">
+  <div class="in">
+    <div class="col c1">
+      <div class="tag" data-anim="fadeInUp" data-delay="50">WIDS DACUM Facilitator Certificate</div>
+      <h1 class="t" data-anim="fadeInUp" data-delay="120">Developing Expert DACUM Facilitators for Industry-Validated Curriculum</h1>
+    </div>
+    <div class="col c2">
+      <div class="im frame"><img src="https://desquareglobal.com/wp-content/uploads/2026/09/DACUM-Facilitator-Dummy-Certificate-1024x683.webp" alt="" loading="lazy" decoding="async" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. About -->
+<section class="sec pg-about">
+  <div class="in">
+    <div class="col c1">
+      <div class="im frame"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/DACUM-Training-Workshop-TVTC-Saudi-Arabia-3-1-1024x576.jpg" alt="" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="col c2">
+      <h2 class="t pg-h2" data-anim="fadeInUp" data-delay="80">About the DACUM Method</h2>
+      <div class="pg-txt txt" data-anim="fadeInUp" data-delay="220"><p>DACUM — Developing A CurriculUM — is a proven occupational analysis methodology used worldwide to identify the duties, tasks, knowledge, and skills required for success in a specific occupation. Developed through structured expert panel sessions, DACUM results serve as the foundation for designing rigorous, industry-validated, performance-based curricula. <a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> has been a leader in DACUM facilitation and training for over three decades, supporting technical colleges, government agencies, and industry partners across the United States and internationally.</p></div>
+      <h3 class="t pg-h3" data-anim="fadeInUp" data-delay="120">Workshop Overview</h3>
+      <div class="pg-txt" data-anim="fadeInUp" data-delay="150"><p>This intensive 5-day certification workshop equips instructional designers, curriculum developers, and education professionals with the complete skillset needed to plan, facilitate, and implement DACUM studies. Participants engage in hands-on activities, guided practice, and peer collaboration throughout the training.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Format options / training details -->
+<section class="sec pg-det">
+  <div class="in">
+    <div class="card2" data-anim="fadeIn">
+      <h2 class="t" data-anim="fadeInUp" data-delay="150">Format Options</h2>
+      <ul class="il" data-anim="fadeInUp" data-delay="150">
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>In-Person (on-site)</span></li>
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Virtual (live online via video conferencing)</span></li>
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Hybrid delivery available upon request</span></li>
+  </ul>
+    </div>
+    <div class="card2" data-anim="fadeIn" data-speed="slow">
+      <h2 class="t" data-anim="fadeInUp" data-delay="150">Training Details</h2>
+      <ul class="il" data-anim="fadeInUp" data-delay="150">
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Duration: 5 Full Days</span></li>
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Cohort Size: Up to 20 Participants</span></li>
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Language: English/Arabic</span></li>
+  </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Certificate -->
+<section class="sec pg-cert">
+  <div class="in">
+    <div class="col c1">
+      <h2 class="t" data-anim="fadeInUp" data-delay="80">WIDS DACUM Facilitator certificate</h2>
+      <div class="txt" data-anim="fadeInUp" data-delay="140"><p>Participants who successfully meet performance criteria will receive the <a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> DACUM Facilitator Certificate, demonstrating their readiness to plan, facilitate, and apply DACUM occupational analysis in professional settings.</p><p>Certification is based on demonstrated performance assessed using the <a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> DACUM Certification Rubric, completed on Day 5 of the workshop. Participants will have opportunities throughout the week to practice each competency and receive expert feedback before the final assessment.</p></div>
+    </div>
+    <div class="col c2">
+      <div class="im frame"><img src="https://desquareglobal.com/wp-content/uploads/2026/09/DACUM-Facilitator-Dummy-Certificate-scaled.webp" alt="" loading="lazy" decoding="async" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 5-day workshop schedule -->
+<section class="sec pg-sch">
+  <div class="in">
+    <h2 class="t" data-anim="fadeInUp" data-delay="60">5-Day Workshop Schedule</h2>
+    <div class="steps">
+      <div class="step" data-anim="fadeInRight" data-speed="fast">
+        <div class="step-icon"><i class="fa-solid fa-pen" aria-hidden="true"></i><span class="step-line"></span><span class="step-badge"> Day 01 </span></div>
+        <h2 class="st">Plan a DACUM Occupational Analysis Project Develop DACUM Components</h2>
+      </div>
+      <div class="step" data-anim="fadeInRight" data-speed="fast">
+        <div class="step-icon"><i class="fa-solid fa-shoe-prints" aria-hidden="true"></i><span class="step-line"></span><span class="step-badge"> Day 02 </span></div>
+        <h2 class="st">Facilitate the DACUM Process Conduct a Modified or Virtual DACUM</h2>
+      </div>
+      <div class="step" data-anim="fadeInRight" data-speed="fast">
+        <div class="step-icon"><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i><span class="step-line"></span><span class="step-badge"> Day 03 </span></div>
+        <h2 class="st">Create a DACUM Chart, Validation Survey, and Follow-up Communication Plan</h2>
+      </div>
+      <div class="step" data-anim="fadeInRight" data-speed="fast">
+        <div class="step-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><span class="step-line"></span><span class="step-badge"> Day 04 </span></div>
+        <h2 class="st">Relate DACUM Results to the Development of a Performance-Based Instructional Design</h2>
+      </div>
+      <div class="step" data-anim="fadeInRight" data-speed="fast">
+        <div class="step-icon"><i class="fa-solid fa-file-lines" aria-hidden="true"></i><span class="step-badge"> Day 05 </span></div>
+        <h2 class="st">DACUM Certification Assessment</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Workshop competencies -->
+<section class="sec pg-comp">
+  <div class="in">
+    <div class="col c1">
+      <div data-anim="fadeIn" data-delay="150"><ol><li>Plan a DACUM occupational analysis project from initial scoping through logistics and panel recruitment</li><li>Develop DACUM components including duties, tasks, and supporting knowledge and skills</li><li>Facilitate the DACUM process effectively, guiding expert panels to produce accurate, validated occupational data</li><li>Conduct a modified or virtual DACUM using alternative methods and digital facilitation tools</li><li>Create a DACUM chart, validation survey, and follow-up communication plan</li><li>Relate DACUM results to the development of a performance-based instructional design</li></ol></div>
+    </div>
+    <div class="col c2">
+      <h2 class="t pg-h2" data-anim="fadeInUp" data-delay="60">Workshop Competencies</h2>
+      <div class="txt" data-anim="fadeInUp" data-delay="110"><p>Upon completing the <a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> DACUM Certification Training, participants will be able to:</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Who should attend / prerequisites -->
+<section class="sec pg-aud">
+  <div class="in">
+    <div class="card2">
+      <h2 class="t" data-anim="fadeInUp">Who Should Attend</h2>
+      <div class="pg-txt" data-anim="fadeInUp" data-delay="80"><p>This training is designed for professionals involved in workforce development, curriculum design, and technical education, including:</p></div>
+      <ul class="il" data-anim="fadeIn">
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Curriculum developers and instructional designers</span></li>
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Technical college faculty and academic administrators</span></li>
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Workforce development specialists and training coordinators</span></li>
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Human resource and talent development professionals</span></li>
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Industry and government training officers</span></li>
+    <li><i class="fa-solid fa-circle-dot" aria-hidden="true"></i><span>Vocational and technical education program leads</span></li>
+  </ul>
+    </div>
+    <div class="card2">
+      <h2 class="t" data-anim="fadeInUp">Prerequisites</h2>
+      <div class="pg-txt txt" data-anim="fadeInUp" data-delay="100"><p>No prior DACUM experience required. Participants should have a background in education, training, or workforce development.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. About WIDS -->
+<section class="sec pg-wids">
+  <div class="in">
+    <div class="col c1">
+      <div class="im frame"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/DACUM-Training-Workshop-COE-Saudi-Arabia-1-1-1024x768.webp" alt="" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="col c2">
+      <h2 class="t pg-h2" data-anim="fadeInUp" data-delay="100">About WIDS</h2>
+      <div class="pg-txt txt" data-anim="fadeInUp" data-delay="150"><p>The Worldwide Instructional Design System (<a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a>) is a division of the Wisconsin Technical College System Foundation (WTCSF), a 501(c)(3) nonprofit organization. Since 1993, <a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> has provided curriculum design tools, consulting, and professional development to educational institutions, government agencies, and industry partners across the United States, Canada, and the Middle East. With decades of experience in instructional design, competency-based learning, and program development, <a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> consultants help organizations create practical, high-quality learning solutions that improve educational and workforce outcomes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. WIDS in the Middle East -->
+<section class="sec pg-me">
+  <div class="in">
+    <div class="col c1">
+      <h2 class="t pg-h2" data-anim="fadeInUp" data-delay="80">WIDS in the Middle East</h2>
+      <div class="pg-txt txt" data-anim="fadeInUp" data-delay="140"><p>In 2018, De Square Global for Educational Consulting Co. based in Kuwait, became the exclusive agent and distributor of <a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> software and services in the GCC countries: Bahrain, Kuwait, Oman, Qatar, Saudi Arabia, and the United Arab Emirates. In 2023, De Square Global also became the exclusive agent and distributor of <a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> software and services in Egypt, Iraq, Jordan, Lebanon, Libya, and Yemen. No other agent or distributor holds these rights in these countries. Backed by more than 50 years of combined experience in teaching, academic leadership, and curriculum design, the De Square Global team delivers <a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> solutions, consulting, and training to help institutions build industry-aligned, learner-centered programs.</p></div>
+    </div>
+    <div class="col c2">
+      <div class="im frame"><img src="https://desquareglobal.com/wp-content/uploads/2026/09/PHOTO-2026-09-13-14-46-53.jpg" alt="" loading="lazy" decoding="async" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. WIDS contact strip -->
+<section class="sec pg-strip">
+  <div class="in">
+    <div class="s1 txt l-txt" data-anim="fadeInUp" data-delay="80"><p><a href="https://www.wids.org/"><span style="text-decoration: underline;"><strong>WIDS</strong></span></a> | 6602 Normandy Lane, Madison, WI 53719 | <strong><span style="text-decoration: underline;"><a href="mailto:info@wids.org">info@wids.org</a></span></strong> | <strong><span style="text-decoration: underline;"><a href="https://www.wids.org/">www.wids.org</a></span></strong></p></div>
+    <div class="s2" data-anim="fadeInUp" data-delay="120"><p>Worldwide Instructional Design System | Empowering Educators. Advancing Workforce.</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <!-- Footer call to action -->
+  <div class="sec ft-cta">
+    <div class="in">
+      <div class="ft-cta-l"><h1>Performance - Based curriculum for Real- World Results</h1></div>
+      <div class="ft-cta-r">
+        <div class="grid2">
+          <div class="btn-wrap al-r" data-anim="fadeInLeft"><a class="btn hv-grow" href="contact-us.html" style="--bg:#F5F8FC;--fg:#212E60;--hbg:#FFFFFF;--hfg:#212E60">Request a Consultation</a></div>
+          <div class="btn-wrap" data-anim="fadeInUp" data-speed="slow"><a class="btn" href="index.html#programs" style="--bg:transparent;--fg:#F5F8FC;--bw:2px;--bd:#F5F8FC;--hbg:#FFFFFF;--hfg:#0D72B9">Explore Our Programs</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer columns -->
+  <div class="sec ft-main">
+    <div class="in">
+      <div class="ft-c1">
+        <a href="index.html"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/logo-1-300x98.webp" alt="De Square Global" /></a>
+        <p>Let’s design your next industry-aligned curriculum together. Contact De Square Global today.</p>
+        <div class="ft-social">
+          <a href="https://facebook.com/desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@de.square.global" target="_blank" rel="noopener" class="hv-shrink" aria-label="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://x.com/DeSquareGlobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="X-twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.snapchat.com/add/desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Snapchat"><i class="fa-brands fa-snapchat"></i></a>
+          <a href="https://www.linkedin.com/company/de-square-global/" target="_blank" rel="noopener" class="hv-shrink" aria-label="Linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://youtube.com/@desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h5>Quick Links</h5>
+        <ul class="ft-links">
+          <li><a href="about-us.html">About us</a></li>
+          <li><a href="our-clients.html">Trusted By</a></li>
+          <li><a href="delivery-options-booking.html">Delivery Options</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Programs</h5>
+        <ul class="ft-links">
+          <li><a href="wids-dacum-facilitator-certificate.html">WIDS DACUM Facilitator Workshop</a></li>
+          <li><a href="wids-course-design-workshop.html">WIDS Course Design Workshop</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Contact Us</h5>
+        <ul class="ft-links ft-contact">
+          <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/96592298828">+ 965 9229 8828</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+96592298828">+ 965 9229 8828</a></li>
+          <li><i class="fa-solid fa-envelopes-bulk"></i><a href="mailto:info@desquareglobal.com">info@desquareglobal.com</a></li>
+          <li><i class="fa-solid fa-location-dot"></i><span class="tx">Plot 6, Block 14، Yaqoub Tower, Qibla, Kuwait</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="sec ft-bottom">
+    <div class="in">
+      <div class="tx"><strong>All rights reserved to the company © 2026 | <a href="index.html">Dsquare Global</a></strong></div>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a href="tel:+96592298828" aria-label="Call us"><i class="fa-solid fa-phone"></i></a>
+  <a href="https://wa.me/96592298828" class="wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+<script>
+
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Entrance animations: same names, timings and delays as the live site ---------- */
+  var els = document.querySelectorAll('[data-anim]');
+  function play(el) {
+    var d = parseInt(el.getAttribute('data-delay') || '0', 10);
+    setTimeout(function () {
+      el.classList.add('animated', el.getAttribute('data-anim'));
+      var sp = el.getAttribute('data-speed');
+      if (sp) el.classList.add('animated-' + sp);
+      el.style.visibility = 'visible';
+    }, d);
+  }
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.style.visibility = 'visible'; });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { play(en.target); io.unobserve(en.target); } });
+    });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Mobile / tablet menu (slides in from the right) ---------- */
+  var body = document.body;
+  var tgl = document.querySelector('.nav-toggle');
+  var cls = document.querySelector('.mnav-close');
+  var ov = document.querySelector('.mnav-overlay');
+  function setMenu(open) { body.classList.toggle('mnav-open', open); if (tgl) tgl.setAttribute('aria-expanded', String(open)); }
+  if (tgl) tgl.addEventListener('click', function () { setMenu(true); });
+  if (cls) cls.addEventListener('click', function () { setMenu(false); });
+  if (ov) ov.addEventListener('click', function () { setMenu(false); });
+  document.querySelectorAll('.mnav .has-sub > a').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); a.parentElement.classList.toggle('open'); });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  document.querySelectorAll('.nav .has-sub > a').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); });
+  });
+
+  /* ---------- Image carousels (autoplay, loop, pause on hover, arrows, slide or fade) ---------- */
+  document.querySelectorAll('.car').forEach(function (car) {
+    var track = car.querySelector('.car-track');
+    var slides = Array.prototype.slice.call(car.querySelectorAll('.car-slide'));
+    var n = slides.length;
+    if (n < 2) return;
+    var fade = car.classList.contains('fade');
+    var delay = parseInt(car.getAttribute('data-autoplay') || '5000', 10);
+    var speed = parseInt(car.getAttribute('data-speed') || '500', 10);
+    car.style.setProperty('--spd', speed + 'ms');
+    var i = 0, timer = null, busy = false;
+    if (fade) {
+      slides[0].classList.add('on');
+    } else {
+      track.appendChild(slides[0].cloneNode(true));   // seamless loop
+    }
+    function go(next) {
+      if (busy) return;
+      if (fade) {
+        slides[i].classList.remove('on');
+        i = (next + n) % n;
+        slides[i].classList.add('on');
+        return;
+      }
+      if (next < 0) {          // jump to the clone, then slide back one
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(' + (-n * 100) + '%)';
+        track.offsetHeight;
+        track.style.transition = '';
+        next = n - 1;
+      }
+      busy = true;
+      i = next;
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+    }
+    track.addEventListener('transitionend', function () {
+      busy = false;
+      if (!fade && i >= n) {
+        track.style.transition = 'none';
+        i = 0;
+        track.style.transform = 'translateX(0)';
+        track.offsetHeight;
+        track.style.transition = '';
+      }
+    });
+    function start() { if (!reduce) { stop(); timer = setInterval(function () { go(i + 1); }, delay); } }
+    function stop() { if (timer) clearInterval(timer); timer = null; }
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    var p = car.querySelector('.car-prev'), nx = car.querySelector('.car-next');
+    if (p) p.addEventListener('click', function () { go(i - 1); start(); });
+    if (nx) nx.addEventListener('click', function () { go(i + 1); start(); });
+    start();
+  });
+})();
+
+</script>
+</body>
+</html>

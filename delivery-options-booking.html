@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Delivery Options &amp; Booking – دي سكوير جلوبال</title>
+<link rel="icon" href="https://desquareglobal.com/wp-content/uploads/2026/08/cropped-favicon-270x270.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+
+/* ===================== Base (WordPress theme + Elementor defaults) ===================== */
+:root{
+  --primary:#0D72B9; --secondary:#224A8D; --text:#212E60; --light:#DDE6F1;
+  --accent:#F5F8FC; --white:#FFFFFF; --dark:#17213D; --muted:#59657A;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Cairo",sans-serif;font-size:16px;line-height:1.5;color:#333;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;border:none;vertical-align:middle}
+a{color:#CC3366;text-decoration:none;background:transparent}
+h1,h2,h3,h4,h5,h6{margin:0;font-family:"Cairo",sans-serif}
+p{margin:0 0 .9rem}
+strong,b{font-weight:bolder}
+button,input,select,textarea{font-family:inherit}
+
+/* ===================== Layout: boxed containers ===================== */
+.sec{position:relative;width:100%}
+.in{width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:column}
+.row{display:flex;flex-direction:row}
+.col{display:flex;flex-direction:column;min-width:0}
+.g20{gap:20px}
+
+/* ===================== Typography helpers ===================== */
+.eb{font-weight:700;font-size:16px;line-height:16px;margin:0}
+.t{margin:0}
+.c-sec{color:#224A8D}.c-pri{color:#0D72B9}.c-mut{color:#59657A}.c-wh{color:#FFFFFF}.c-acc{color:#F5F8FC}
+.c-lt{color:#DDE6F1}.c-txt{color:#212E60}.c-dk{color:#17213D}.c-e8{color:#E8F2FA}
+.ta-c{text-align:center}
+.txt a{color:#0D72B9}
+.txt.l-wh a{color:#FFFFFF}.txt.l-acc a{color:#F5F8FC}.txt.l-lt a{color:#DDE6F1}.txt.l-txt a{color:#212E60}.txt.l-pink a{color:#CC3366}
+
+/* ===================== Buttons (Elementor button widget) ===================== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-family:"Roboto",sans-serif;font-size:15px;font-weight:500;line-height:1;
+  padding:18px;border-radius:4px;background:var(--bg);color:var(--fg);border:var(--bw,0) solid var(--bd,transparent);transition:all .3s;cursor:pointer;text-align:center}
+.btn:hover,.btn:focus{background:var(--hbg,var(--bg));color:var(--hfg,var(--fg))}
+.btn i{font-size:15px;line-height:1}
+.btn-wrap{display:flex}
+.btn-wrap.al-c{justify-content:center}.btn-wrap.al-r{justify-content:flex-end}
+.btn-wrap.full .btn{width:100%}
+
+/* Elementor hover animations */
+.hv-grow{transition-duration:.3s;transition-property:transform,background,color,border-color}
+.hv-grow:hover,.hv-grow:focus,.hv-grow:active{transform:scale(1.1)}
+.hv-shrink{transition-duration:.3s;transition-property:transform}
+.hv-shrink:hover,.hv-shrink:focus,.hv-shrink:active{transform:scale(.9)}
+
+/* ===================== Images ===================== */
+.im{display:block;line-height:0}
+.im img{width:100%;height:auto}
+.r12 img,.r12{border-radius:12px}
+.frame img{border:2px solid var(--fc,#0D72B9);box-shadow:0 0 10px 0 rgba(0,0,0,.5);border-radius:12px}
+
+/* ===================== Icon box ===================== */
+.ib{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+.ib-icon{margin-bottom:15px;line-height:0;flex-shrink:0}
+.ic{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;padding:16px;background:var(--ibg);color:var(--ifg);line-height:1}
+.ic i{font-size:25px;width:25px;height:25px;display:flex;align-items:center;justify-content:center}
+.ib-title{margin:.5rem 0 1rem;font-size:24px;line-height:32.4px;font-weight:700}
+.ib-title a{color:inherit}
+.ib-desc{margin:0;font-size:18px;line-height:29.7px}
+.ib-desc a{color:inherit}
+.ib-inline{flex-direction:row;align-items:flex-start;text-align:left}
+.ib-inline .ib-icon{margin:0 15px 0 0}
+.ib-inline .ib-content{flex:1;min-width:0}
+
+/* ===================== Icon list ===================== */
+.il{list-style:none;margin:0;padding:0}
+.il li{display:flex;align-items:center;font-size:16px;line-height:24px;color:#17213D}
+.il li:not(:last-child){padding-bottom:8px}
+.il li:not(:first-child){margin-top:8px}
+.il li i{font-size:14px;width:17.5px;color:#0D72B9;flex-shrink:0;text-align:center}
+.il li span{padding-left:5px}
+
+/* ===================== Cards used across pages ===================== */
+.card{background:#fff;border:1px solid #E3EBF4;border-radius:18px;box-shadow:0 14px 35px -18px rgba(33,46,96,.2)}
+
+/* ===================== Entrance animations (Elementor "Motion Effects") ===================== */
+.js [data-anim]{visibility:hidden}
+.animated{animation-duration:1.25s}
+.animated.animated-slow{animation-duration:2s}
+.animated.animated-fast{animation-duration:.75s}
+@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+@keyframes fadeInDown{0%{opacity:0;transform:translate3d(0,-100%,0)}100%{opacity:1;transform:none}}
+@keyframes fadeInUp{0%{opacity:0;transform:translate3d(0,100%,0)}100%{opacity:1;transform:none}}
+@keyframes fadeInLeft{0%{opacity:0;transform:translate3d(-100%,0,0)}100%{opacity:1;transform:none}}
+@keyframes fadeInRight{0%{opacity:0;transform:translate3d(100%,0,0)}100%{opacity:1;transform:none}}
+.fadeIn{animation-name:fadeIn}.fadeInDown{animation-name:fadeInDown}.fadeInUp{animation-name:fadeInUp}
+.fadeInLeft{animation-name:fadeInLeft}.fadeInRight{animation-name:fadeInRight}
+@media (prefers-reduced-motion:reduce){.js [data-anim]{visibility:visible}.animated{animation:none!important}}
+
+/* ===================== Image carousel (Elementor image carousel) ===================== */
+.car{position:relative;overflow:hidden;width:100%}
+.car-track{display:flex;align-items:flex-start;transition:transform var(--spd,500ms) ease}
+.car-slide{flex:0 0 100%;text-align:center;padding-bottom:6px}
+.car-slide img{width:100%;height:auto;border-radius:12px}
+.car.fade .car-track{display:grid}
+.car.fade .car-slide{grid-area:1/1;opacity:0;transition:opacity var(--spd,1000ms) ease}
+.car.fade .car-slide.on{opacity:1;z-index:1}
+.car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;background:none;border:0;padding:0;cursor:pointer;color:rgba(237,237,237,.9);font-size:25px;line-height:1;width:25px;height:25px;display:flex;align-items:center;justify-content:center}
+.car-prev{left:10px}.car-next{right:10px}
+.car.dots{padding-bottom:30px}
+.car-dots{position:absolute;bottom:5px;left:0;right:0;display:flex;justify-content:center;gap:12px}
+.car-dots span{width:6px;height:6px;border-radius:50%;background:#000;opacity:.2}
+.car-dots span.on{opacity:1}
+
+/* ===================== HEADER (copied from the live site) ===================== */
+.site-header{position:relative;z-index:50;background:#fff}
+.hdr{display:flex;align-items:stretch;min-height:105px}
+.hdr > div{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:10px}
+.hdr-logo{width:18.25%}
+.hdr-logo img{width:240px}
+.hdr-wids{width:12%}
+.hdr-wids img{width:151px}
+.hdr-menu{width:53.7%}
+.hdr-btn{width:15.05%;align-items:flex-start!important}
+.nav{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.nav > li{position:relative}
+.nav > li > a{display:flex;align-items:center;font-family:"Cairo",sans-serif;font-size:16px;line-height:16px;font-weight:700;color:#224A8D;margin:0 8px;text-transform:capitalize;transition:color .2s ease-in-out;cursor:pointer}
+.nav > li:hover > a,.nav > li.current > a{color:#0D72B9}
+.nav .caret{font-size:14px;margin-left:10px;line-height:1}
+.nav .sub{position:absolute;top:100%;left:8px;width:225px;list-style:none;margin:0;padding:0;opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .3s ease-in-out,transform .3s linear,visibility .3s;z-index:20}
+.nav > li:hover > .sub,.nav > li:focus-within > .sub{opacity:1;visibility:visible;transform:none}
+.nav .sub a{display:block;font-family:"Cairo",sans-serif;font-size:14px;line-height:21px;font-weight:500;color:#DDE6F1;background:#0D72B9;padding:15px 20px;border-bottom:1px solid #DDE6F1;transition:color .3s ease-in-out}
+.nav .sub li:hover > a{color:#FFFFFF}
+.req-btn{display:inline-block;font-family:"Cairo",sans-serif;font-size:15px;line-height:15px;font-weight:400;color:#fff;background:#0D72B9;padding:15px 30px;border:2px solid #0D72B9;border-radius:4px;transition:.3s ease-in-out}
+.req-btn:hover,.req-btn:focus{color:#0D72B9;background:rgba(255,255,255,0)}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;color:#224A8D;font-size:24px;padding:8px;line-height:1}
+.mnav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:98}
+.mnav{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100%;background:#17213D;transform:translateX(100%);transition:transform .3s ease-in-out;z-index:99;overflow-y:auto;padding-top:60px}
+.mnav-close{position:absolute;top:14px;right:16px;background:none;border:0;color:#fff;font-size:24px;cursor:pointer;line-height:1}
+.mnav ul{list-style:none;margin:0;padding:0}
+.mnav > ul > li > a{display:flex;justify-content:space-between;align-items:center;font-family:"Cairo",sans-serif;font-size:16px;font-weight:700;line-height:16px;color:#B5B5B5;background:#17213D;padding:18px 12px;border-bottom:1px solid rgba(230,230,230,.06);text-transform:capitalize}
+.mnav > ul > li:hover > a{color:#8DC3FF}
+.mnav > ul > li.current > a{color:#2B2B2B;background:#F5F5F5}
+.mnav .msub{display:none}
+.mnav li.open > .msub{display:block}
+.mnav .msub a{display:block;font-family:"Cairo",sans-serif;font-size:14px;font-weight:500;line-height:21px;color:#DDE6F1;background:#0D72B9;padding:15px 20px;border-bottom:1px solid rgba(230,230,230,.06)}
+.mnav .msub li:hover > a{color:#FFFFFF}
+.mnav .msub li.current > a{color:#0D72B9;background:#EFEFEF}
+body.mnav-open .mnav{transform:none}
+body.mnav-open .mnav-overlay{opacity:1;visibility:visible}
+
+/* ===================== FOOTER (copied from the live site) ===================== */
+.ft-cta{background:#212E60 url("https://desquareglobal.com/wp-content/uploads/2026/08/footer.webp") no-repeat;background-size:100% auto;background-position:0 -50px;padding:0 48px;border-bottom:2px solid #0D72B9}
+.ft-cta .in{flex-direction:row;padding:48px 0}
+.ft-cta-l{width:65.2%;padding:10px}
+.ft-cta-l h1{font-size:40px;line-height:40px;font-weight:600;color:#fff}
+.ft-cta-r{width:34.8%;padding:10px}
+.ft-cta-r .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ft-main{background:#212E60 url("https://desquareglobal.com/wp-content/uploads/2026/08/footer.webp") no-repeat 50% 100%;background-size:cover;padding:0 24px;margin-top:-1px}
+.ft-main .in{flex-direction:row;align-items:flex-start;padding:48px 0}
+.ft-c1{width:39.8%;padding:10px;display:flex;flex-direction:column;gap:20px}
+.ft-c1 > a{display:block;height:105px}
+.ft-c1 img{width:300px}
+.ft-c1 p{font-size:16px;line-height:24px;color:#DDE6F1}
+.ft-col{width:20.1%;padding:10px;display:flex;flex-direction:column;gap:20px}
+.ft-col h5{font-size:20px;line-height:20px;font-weight:700;color:#fff}
+.ft-links{list-style:none;margin:0;padding:0}
+.ft-links li:not(:last-child){padding-bottom:5px}
+.ft-links li:not(:first-child){margin-top:5px}
+.ft-links a,.ft-links span{font-size:16px;line-height:24px;color:#DDE6F1;transition:color .3s}
+.ft-links a:hover{color:#5BBBFF}
+.ft-contact li{display:flex;align-items:flex-start}
+.ft-contact li:not(:last-child){padding-bottom:3px}
+.ft-contact li:not(:first-child){margin-top:3px}
+.ft-contact i{font-size:20px;width:25px;color:#DDE6F1;margin-top:2px;flex-shrink:0;text-align:center}
+.ft-contact a,.ft-contact span.tx{padding-left:5px}
+.ft-social{display:flex;flex-wrap:wrap;gap:0 15px}
+.ft-social a{width:32px;height:32px;border-radius:10%;background:#DDE6F1;color:#212E60;display:flex;align-items:center;justify-content:center;font-size:20px}
+.ft-bottom{background:#DDE6F1;padding:0 10px}
+.ft-bottom .in{padding:10px 0}
+.ft-bottom div.tx{font-size:16px;line-height:24px;color:#212E60;text-align:center;font-weight:700}
+.ft-bottom a{color:#0D72B9}
+
+/* Floating call / WhatsApp buttons (as on the live site) */
+.float-btns{position:fixed;right:20px;bottom:20px;z-index:40;display:flex;flex-direction:column;gap:12px}
+.float-btns a{width:48px;height:48px;border-radius:50%;background:#22C55E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,.2);transition:transform .2s,background .2s}
+.float-btns a:hover{transform:scale(1.1);background:#16A34A}
+.float-btns a.wa i{font-size:26px}
+
+/* ===================== Responsive: header + footer ===================== */
+@media (max-width:1024px){
+  .nav{display:none}
+  .nav-toggle{display:inline-flex}
+  .hdr-menu{align-items:flex-end!important;width:auto;flex:1}
+  .hdr-btn{width:auto;flex:0 0 auto}
+  .ft-cta .in,.ft-main .in{flex-direction:column}
+  .ft-cta-l,.ft-cta-r,.ft-c1,.ft-col{width:100%}
+}
+@media (max-width:767px){
+  .hdr{min-height:85px}
+  .hdr-logo{width:auto;flex:0 0 auto}
+  .hdr-logo img{width:151px}
+  .hdr-wids{width:auto;flex:0 0 auto}
+  .hdr-wids img{width:94px}
+  .hdr-menu{width:auto;flex:1}
+  .hdr-btn{display:none!important}
+  .ft-cta{padding:0 24px}
+  .ft-cta-l h1{font-size:32px;line-height:32px}
+  .ft-main{padding:0 10px}
+}
+
+/* ===================== This page ===================== */
+
+/* 1. For individuals */
+.dl-ind{padding:0 30px}
+.dl-ind .in{padding:60px 0 80px;flex-direction:row}
+.dl-ind .c1{width:60%;padding:10px;gap:20px;justify-content:center}
+.dl-ind .c1 .ib-title{font-size:24px;line-height:32.4px;color:#224A8D}
+.dl-ind .c1 .ib-desc{color:#59657A}
+.dl-ind .c2{width:40%;background:#fff;padding:28px 24px;border-radius:12px 18px 18px;box-shadow:0 14px 44px 5px rgba(33,46,96,.2);gap:20px;justify-content:center}
+.dl-h2{font-size:42px;line-height:52.5px;font-weight:800;color:#224A8D}
+.dl-txt{font-size:16px;line-height:27.2px;color:#59657A}
+.dl-ind .pic{display:flex;justify-content:center}
+.dl-ind .pic img{width:358px;border:2px solid #0D72B9;border-radius:12px;box-shadow:0 0 10px 0 rgba(0,0,0,.5)}
+
+/* 2. For companies & institutions */
+.dl-co{background:#F5F8FC}
+.dl-co .in{padding:80px 0 0;flex-direction:row}
+.dl-co .c1{width:45%;padding:10px;gap:20px}
+.dl-co .c1 .pic img{width:100%;border:2px solid #224A8D;border-radius:12px;box-shadow:0 0 10px 0 rgba(0,0,0,.5)}
+.dl-co .c2{width:55%;padding:10px;gap:20px}
+.dl-card{background:#fff;padding:28px 24px;border:1px solid #DDE6F1;border-radius:18px;box-shadow:0 14px 34px -18px rgba(33,46,96,.2);display:flex;flex-direction:column;gap:20px}
+.dl-card.sq{border-radius:0;border-width:3px}
+.dl-co .dl-card{min-height:260px}
+.dl-card .ib-title{color:#224A8D}
+.dl-card .ib-desc{color:#59657A}
+
+/* 3. How it works for companies */
+.dl-how{background:#224A8D;padding:0 24px}
+.dl-how .in{padding:78px 0;gap:20px}
+.dl-how .dl-h2{color:#DDE6F1;text-align:center}
+.dl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:10px}
+.dl-step{background:#fff;padding:26px 20px;border:1px solid #DDE6F1;border-radius:18px;box-shadow:0 14px 34px -18px rgba(33,46,96,.2);display:flex;flex-direction:column;gap:20px}
+.dl-step .num{font-size:18px;line-height:22.5px;font-weight:800;color:#FFFFFF;text-align:center}
+.dl-step .si{display:flex;justify-content:center;align-items:center;height:54px;line-height:0}
+.dl-step .si .ic{padding:12px}
+.dl-step .si .ic i{font-size:24px;width:24px;height:24px}
+.dl-step h3{font-size:16px;line-height:20px;font-weight:700;color:#0D72B9;text-align:center}
+
+/* 4. Choose your format */
+.dl-fmt{background:#F5F8FC;padding:0 24px}
+.dl-fmt .in{padding:78px 0;gap:20px}
+.dl-fmt .dl-h2{text-align:center}
+.dl-fmt .dl-card{min-height:220px}
+.dl-fmt .ib-title{color:#0D72B9}
+
+/* 5. Bottom button */
+.dl-end{background:#F5F8FC;margin-top:-61px}
+.dl-end .in{padding:0 0 60px}
+
+@media (max-width:1024px){
+  .dl-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:767px){
+  .dl-ind .in{flex-direction:column}
+  .dl-ind .c1,.dl-ind .c2{width:100%}
+  .dl-ind .c2{padding:22px 18px}
+  .dl-ind .c1 .ib-title,.dl-card .ib-title{font-size:22px;line-height:29.7px}
+  .ib-inline{flex-direction:column;align-items:center;text-align:center}
+  .ib-inline .ib-icon{margin:0 0 15px}
+  .dl-h2{font-size:32px;line-height:40px;text-align:center}
+  .dl-txt{font-size:18px;line-height:30.6px;text-align:center}
+  .dl-co .in{padding:60px 0 0;flex-direction:column}
+  .dl-co .c1,.dl-co .c2{width:100%}
+  .dl-co .btn-wrap{justify-content:center}
+  .dl-card{padding:22px 18px}
+  .dl-how{padding:0 15px}
+  .dl-how .in{padding:60px 0 42px}
+  .dl-grid{grid-template-columns:1fr}
+  .dl-step{padding:22px 18px}
+  .dl-step .num{font-size:17px;line-height:21.25px}
+  .dl-step h3{font-size:18px;line-height:22.5px}
+  .dl-fmt{padding:0 15px}
+  .dl-fmt .in{padding:42px 0}
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <a href="index.html" aria-label="De Square Global home"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/logo-1.webp" alt="De Square Global" /></a>
+    </div>
+    <div class="hdr-wids">
+      <a href="https://www.wids.org/" aria-label="WIDS"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/wids-e1790802950941.webp" alt="WIDS" /></a>
+    </div>
+    <div class="hdr-menu">
+      <nav aria-label="Main menu">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li class="current"><a href="delivery-options-booking.html">Delivery Options &amp; Booking</a></li>
+          <li><a href="our-clients.html">Our Clients</a></li>
+          <li class="has-sub"><a href="#" aria-haspopup="true">Programs<i class="fa-solid fa-angle-down caret" aria-hidden="true"></i></a>
+            <ul class="sub">
+              <li><a href="wids-dacum-facilitator-certificate.html">WIDS DACUM Facilitator Certificate</a></li>
+              <li><a href="wids-course-design-workshop.html">WIDS Course Design Workshop</a></li>
+            </ul>
+          </li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    </div>
+    <div class="hdr-btn">
+      <a class="req-btn" href="contact-us.html">Request a Book</a>
+    </div>
+  </div>
+
+  <!-- Mobile / tablet menu -->
+  <div class="mnav-overlay"></div>
+  <nav class="mnav" aria-label="Mobile menu">
+    <button type="button" class="mnav-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li class="current"><a href="delivery-options-booking.html">Delivery Options &amp; Booking</a></li>
+      <li><a href="our-clients.html">Our Clients</a></li>
+      <li class="has-sub"><a href="#">Programs<i class="fa-solid fa-angle-down" aria-hidden="true"></i></a>
+        <ul class="msub">
+          <li><a href="wids-dacum-facilitator-certificate.html">WIDS DACUM Facilitator Certificate</a></li>
+          <li><a href="wids-course-design-workshop.html">WIDS Course Design Workshop</a></li>
+        </ul>
+      </li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- 1. For individuals -->
+<section class="sec dl-ind">
+  <div class="in">
+    <div class="col c1">
+      <div class="ib ib-inline">
+  <div class="ib-icon"><span class="ic" style="--ibg:#224A8D;--ifg:#F0F7FD"><i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">Learn &amp; Unwind — Training with a Getaway:</h3><p class="ib-desc ">Learn &amp; Unwind — Training with a Getaway: For participants traveling from Arab countries like Egypt, we can combine your in-person training with a getaway in destinations such as Sharm El-Sheikh or Hurghada. Ask us about flexible, travel-friendly training dates.</p></div>
+</div>
+      <div class="ib ib-inline">
+  <div class="ib-icon"><span class="ic" style="--ibg:#224A8D;--ifg:#F0F7FD"><i class="fa-solid fa-users" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">In-Person (Regional Sessions):</h3><p class="ib-desc ">Attend our scheduled sessions held in select cities across the region.</p></div>
+</div>
+      <div class="ib ib-inline">
+  <div class="ib-icon"><span class="ic" style="--ibg:#224A8D;--ifg:#F0F7FD"><i class="fa-solid fa-laptop" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">Online (Live Virtual)</h3><p class="ib-desc ">Join live sessions from anywhere in the Arab world — no travel required. Full interaction with instructors and fellow participants, same certification upon completion.</p></div>
+</div>
+    </div>
+    <div class="col c2" data-anim="fadeInRight">
+      <h2 class="t dl-h2">For Individuals</h2>
+      <div class="dl-txt"><p>You can register for any of our WIDS certification programs and choose the format that fits your schedule and location:</p></div>
+      <div class="pic" data-anim="fadeIn" data-speed="slow"><img src="https://desquareglobal.com/wp-content/uploads/2026/09/PHOTO-2026-09-07-15-26-53.jpg" alt="" loading="lazy" decoding="async" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. For companies & institutions -->
+<section class="sec dl-co">
+  <div class="in">
+    <div class="col c1" data-anim="fadeIn">
+      <div class="pic"><img src="https://desquareglobal.com/wp-content/uploads/2026/09/PHOTO-2026-09-07-12-55-54-1024x768.jpg" alt="" loading="lazy" decoding="async" /></div>
+      <h2 class="t dl-h2">For Companies &amp; Institutions</h2>
+      <div class="dl-txt"><p>We work with organizations to design a training experience that fits their goals, headcount, and schedule:</p></div>
+      <div class="btn-wrap" data-anim="fadeInLeft"><a class="btn hv-grow" href="contact-us.html" style="--bg:#224A8D;--fg:#F5F8FC;--hbg:#0D72B9;--hfg:#F5F8FC">Request a Consultation</a></div>
+    </div>
+    <div class="col c2">
+      <div class="dl-card">
+        <div class="ib">
+  <div class="ib-icon"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-building" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">On-Site at Your Institution</h3><p class="ib-desc ">Our certified facilitators come to you. We deliver the full program at your company or campus, using your real projects and teams as working examples.</p></div>
+</div>
+      </div>
+      <div class="dl-card">
+        <div class="ib">
+  <div class="ib-icon"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">In-Person at a Regional Venue</h3><p class="ib-desc ">Prefer to bring your team off-site? We can host your group at one of our regional training locations.</p></div>
+</div>
+      </div>
+      <div class="dl-card sq">
+        <div class="ib">
+  <div class="ib-icon"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-desktop" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">Online (Live Virtual)</h3><p class="ib-desc ">Train your entire team remotely, without travel costs or downtime — ideal for teams spread across multiple cities or countries.</p></div>
+</div>
+      </div>
+      <div class="dl-card">
+        <div class="ib">
+  <div class="ib-icon"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">Hybrid Delivery:</h3><p class="ib-desc ">Combine in-person and virtual attendance in the same session — perfect for teams split between headquarters and branch offices.</p></div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. How it works for companies -->
+<section class="sec dl-how">
+  <div class="in">
+    <h2 class="t dl-h2">How It Works for Companies</h2>
+    <div class="dl-grid">
+      <div class="dl-step">
+        <div class="num">1</div>
+        <div class="si"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-comments" aria-hidden="true"></i></span></div>
+        <h3>Reach out to us with your team size, goals, and preferred format</h3>
+      </div>
+      <div class="dl-step">
+        <div class="num">2</div>
+        <div class="si"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></span></div>
+        <h3>We propose a tailored schedule and delivery plan</h3>
+      </div>
+      <div class="dl-step">
+        <div class="num">3</div>
+        <div class="si"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span></div>
+        <h3>We confirm dates, location (or virtual setup), and materials</h3>
+      </div>
+      <div class="dl-step">
+        <div class="num">4</div>
+        <div class="si"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-certificate" aria-hidden="true"></i></span></div>
+        <h3>Your team completes the program and receives WIDS certification</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Choose your format -->
+<section class="sec dl-fmt">
+  <div class="in">
+    <h2 class="t dl-h2">Choose your format</h2>
+    <div class="dl-grid">
+      <div class="dl-card">
+        <div class="ib">
+  <div class="ib-icon"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-laptop" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">Online</h3><p class="ib-desc ">Best for individuals or teams who want flexibility without travel</p></div>
+</div>
+      </div>
+      <div class="dl-card">
+        <div class="ib">
+  <div class="ib-icon"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-user-group" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">In-Person</h3><p class="ib-desc ">Best for those who prefer hands-on, face-to-face learning</p></div>
+</div>
+      </div>
+      <div class="dl-card">
+        <div class="ib">
+  <div class="ib-icon"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-shuffle" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">Hybrid</h3><p class="ib-desc ">Best for fixed teams — some on-site, some remote</p></div>
+</div>
+      </div>
+      <div class="dl-card sq">
+        <div class="ib">
+  <div class="ib-icon"><span class="ic" style="--ibg:#0D72B9;--ifg:#F0F7FD"><i class="fa-solid fa-building" aria-hidden="true"></i></span></div>
+  <div class="ib-content"><h3 class="ib-title ">On-Site (In-House)</h3><p class="ib-desc ">Best for companies training multiple employees together.</p></div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Request a consultation -->
+<section class="sec dl-end">
+  <div class="in">
+    <div class="btn-wrap al-c" data-anim="fadeInLeft"><a class="btn hv-grow" href="contact-us.html" style="--bg:#224A8D;--fg:#F5F8FC;--hbg:#0D72B9;--hfg:#F5F8FC">Request a Consultation</a></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <!-- Footer call to action -->
+  <div class="sec ft-cta">
+    <div class="in">
+      <div class="ft-cta-l"><h1>Performance - Based curriculum for Real- World Results</h1></div>
+      <div class="ft-cta-r">
+        <div class="grid2">
+          <div class="btn-wrap al-r" data-anim="fadeInLeft"><a class="btn hv-grow" href="contact-us.html" style="--bg:#F5F8FC;--fg:#212E60;--hbg:#FFFFFF;--hfg:#212E60">Request a Consultation</a></div>
+          <div class="btn-wrap" data-anim="fadeInUp" data-speed="slow"><a class="btn" href="index.html#programs" style="--bg:transparent;--fg:#F5F8FC;--bw:2px;--bd:#F5F8FC;--hbg:#FFFFFF;--hfg:#0D72B9">Explore Our Programs</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer columns -->
+  <div class="sec ft-main">
+    <div class="in">
+      <div class="ft-c1">
+        <a href="index.html"><img src="https://desquareglobal.com/wp-content/uploads/2026/08/logo-1-300x98.webp" alt="De Square Global" /></a>
+        <p>Let’s design your next industry-aligned curriculum together. Contact De Square Global today.</p>
+        <div class="ft-social">
+          <a href="https://facebook.com/desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@de.square.global" target="_blank" rel="noopener" class="hv-shrink" aria-label="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://x.com/DeSquareGlobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="X-twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.snapchat.com/add/desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Snapchat"><i class="fa-brands fa-snapchat"></i></a>
+          <a href="https://www.linkedin.com/company/de-square-global/" target="_blank" rel="noopener" class="hv-shrink" aria-label="Linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://youtube.com/@desquareglobal" target="_blank" rel="noopener" class="hv-shrink" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h5>Quick Links</h5>
+        <ul class="ft-links">
+          <li><a href="about-us.html">About us</a></li>
+          <li><a href="our-clients.html">Trusted By</a></li>
+          <li><a href="delivery-options-booking.html">Delivery Options</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Programs</h5>
+        <ul class="ft-links">
+          <li><a href="wids-dacum-facilitator-certificate.html">WIDS DACUM Facilitator Workshop</a></li>
+          <li><a href="wids-course-design-workshop.html">WIDS Course Design Workshop</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Contact Us</h5>
+        <ul class="ft-links ft-contact">
+          <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/96592298828">+ 965 9229 8828</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+96592298828">+ 965 9229 8828</a></li>
+          <li><i class="fa-solid fa-envelopes-bulk"></i><a href="mailto:info@desquareglobal.com">info@desquareglobal.com</a></li>
+          <li><i class="fa-solid fa-location-dot"></i><span class="tx">Plot 6, Block 14، Yaqoub Tower, Qibla, Kuwait</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="sec ft-bottom">
+    <div class="in">
+      <div class="tx"><strong>All rights reserved to the company © 2026 | <a href="index.html">Dsquare Global</a></strong></div>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a href="tel:+96592298828" aria-label="Call us"><i class="fa-solid fa-phone"></i></a>
+  <a href="https://wa.me/96592298828" class="wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+<script>
+
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Entrance animations: same names, timings and delays as the live site ---------- */
+  var els = document.querySelectorAll('[data-anim]');
+  function play(el) {
+    var d = parseInt(el.getAttribute('data-delay') || '0', 10);
+    setTimeout(function () {
+      el.classList.add('animated', el.getAttribute('data-anim'));
+      var sp = el.getAttribute('data-speed');
+      if (sp) el.classList.add('animated-' + sp);
+      el.style.visibility = 'visible';
+    }, d);
+  }
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.style.visibility = 'visible'; });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { play(en.target); io.unobserve(en.target); } });
+    });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Mobile / tablet menu (slides in from the right) ---------- */
+  var body = document.body;
+  var tgl = document.querySelector('.nav-toggle');
+  var cls = document.querySelector('.mnav-close');
+  var ov = document.querySelector('.mnav-overlay');
+  function setMenu(open) { body.classList.toggle('mnav-open', open); if (tgl) tgl.setAttribute('aria-expanded', String(open)); }
+  if (tgl) tgl.addEventListener('click', function () { setMenu(true); });
+  if (cls) cls.addEventListener('click', function () { setMenu(false); });
+  if (ov) ov.addEventListener('click', function () { setMenu(false); });
+  document.querySelectorAll('.mnav .has-sub > a').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); a.parentElement.classList.toggle('open'); });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  document.querySelectorAll('.nav .has-sub > a').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); });
+  });
+
+  /* ---------- Image carousels (autoplay, loop, pause on hover, arrows, slide or fade) ---------- */
+  document.querySelectorAll('.car').forEach(function (car) {
+    var track = car.querySelector('.car-track');
+    var slides = Array.prototype.slice.call(car.querySelectorAll('.car-slide'));
+    var n = slides.length;
+    if (n < 2) return;
+    var fade = car.classList.contains('fade');
+    var delay = parseInt(car.getAttribute('data-autoplay') || '5000', 10);
+    var speed = parseInt(car.getAttribute('data-speed') || '500', 10);
+    car.style.setProperty('--spd', speed + 'ms');
+    var i = 0, timer = null, busy = false;
+    if (fade) {
+      slides[0].classList.add('on');
+    } else {
+      track.appendChild(slides[0].cloneNode(true));   // seamless loop
+    }
+    function go(next) {
+      if (busy) return;
+      if (fade) {
+        slides[i].classList.remove('on');
+        i = (next + n) % n;
+        slides[i].classList.add('on');
+        return;
+      }
+      if (next < 0) {          // jump to the clone, then slide back one
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(' + (-n * 100) + '%)';
+        track.offsetHeight;
+        track.style.transition = '';
+        next = n - 1;
+      }
+      busy = true;
+      i = next;
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+    }
+    track.addEventListener('transitionend', function () {
+      busy = false;
+      if (!fade && i >= n) {
+        track.style.transition = 'none';
+        i = 0;
+        track.style.transform = 'translateX(0)';
+        track.offsetHeight;
+        track.style.transition = '';
+      }
+    });
+    function start() { if (!reduce) { stop(); timer = setInterval(function () { go(i + 1); }, delay); } }
+    function stop() { if (timer) clearInterval(timer); timer = null; }
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    var p = car.querySelector('.car-prev'), nx = car.querySelector('.car-next');
+    if (p) p.addEventListener('click', function () { go(i - 1); start(); });
+    if (nx) nx.addEventListener('click', function () { go(i + 1); start(); });
+    start();
+  });
+})();
+
+</script>
+</body>
+</html>
